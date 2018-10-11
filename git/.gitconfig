@@ -1,0 +1,29 @@
+[user]
+	name = Aaron Agarunov
+	email = agarunov.aaron@gmail.com
+
+[alias]
+	co = checkout
+	cob = checkout -b
+
+	l1 = log --pretty=oneline --graph --abbrev-commit
+	l2 = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --graph --abbrev-commit
+	lbranch = log --all --graph --decorate --oneline --simplify-by-decoration
+
+	# List contributors with number of commits
+	contributors = shortlog --summary --numbered
+
+	# Interactive rebase with the given number of latest commits
+	reb = "!r() { git rebase -i HEAD~$1; }; r"
+
+	# List aliases
+	aliases = config --get-regexp alias
+
+	# Show verbose output about tags, branches or remotes
+	tags = tag -l
+	branches = branch -a
+	remotes = remote -v
+
+[apply]
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
