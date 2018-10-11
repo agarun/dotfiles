@@ -5,6 +5,8 @@
 [alias]
 	co = checkout
 	cob = checkout -b
+	cp = cherry-pick
+	unstage = reset HEAD
 
 	l1 = log --pretty=oneline --graph --abbrev-commit
 	l2 = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --graph --abbrev-commit
@@ -27,3 +29,22 @@
 [apply]
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
+
+[status]
+	branch = true
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold # line info
+	old = red # deletions
+	new = green # additions
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
