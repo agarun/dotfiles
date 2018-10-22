@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+if test $(which brew); then
+  brew update
+fi
+
+# (todo): https://github.com/caarlos0/dotfiles/blob/master/script/bootstrap etc.
+ln -sf ~/.dotfiles/git/.gitconfig ~
+ln -sf ~/.dotfiles/git/.gitignore ~
+ln -sf ~/.dotfiles/run/.bash_profile ~
+ln -sf ~/.dotfiles/run/.vimrc ~
+
+# rm $HOME/Library/Application Support/Code/User/settings.json
+# ln -sf ~/.dotfiles/vscode/settings.json $HOME/Library/Application Support/Code/User/
