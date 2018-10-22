@@ -147,3 +147,7 @@ alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# tmux + iTerm
+alias itn="tmux -CC new -s "
+alias it="tmux -CC -t "

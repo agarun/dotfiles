@@ -9,6 +9,7 @@ ln -sf ~/.dotfiles/git/.gitconfig ~
 ln -sf ~/.dotfiles/git/.gitignore ~
 ln -sf ~/.dotfiles/run/.bash_profile ~
 ln -sf ~/.dotfiles/vim/.vimrc ~
+ln -sf ~/.dotfiles/tmux/.tmux.conf ~
 yes | /bin/cp -rf ~/.dotfiles/vim/* ~/.vim/
 
 # rm $HOME/Library/Application Support/Code/User/settings.json
