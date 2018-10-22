@@ -22,7 +22,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'pangloss/vim-javascript'
+" Plugin 'Valloric/YouCompleteMe' # TODO
 
 call vundle#end()            " required
 
@@ -32,7 +33,21 @@ filetype plugin indent on    " required
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
+" From Stride's dotfiles
 if should_plugin_install == 1
     silent! PluginInstall
     q
 endif
+
+" Themes
+set background=dark
+colorscheme gruvbox
+
+" NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+map <C-\> :NERDTreeToggle<CR>
