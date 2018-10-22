@@ -27,6 +27,12 @@
 	branchbros = for-each-ref --sort=-committerdate --format="%(color:blue)%(authordate:relative) %(color:red)%(authorname) %(color:white)%(color:bold)%(refname:short)" refs/remotes
 	remotes = remote -v
 
+	# Show my config
+	sc = config --list
+
+	# Show my aliases
+	sa = config --get-regexp alias
+
 [apply]
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
