@@ -25,6 +25,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 " Plugin 'Valloric/YouCompleteMe' # TODO
+Plugin 'romainl/flattened'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'morhetz/gruvbox'
 
 call vundle#end()            " required
 
