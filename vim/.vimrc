@@ -24,10 +24,16 @@ Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-" Plugin 'Valloric/YouCompleteMe' # TODO
+
+" TODO
+" Plugin 'Valloric/YouCompleteMe'
+
+" Themes
 Plugin 'romainl/flattened'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'morhetz/gruvbox'
+Plugin 'sjl/badwolf'
+Plugin 'arcticicestudio/nord-vim'
 
 call vundle#end()            " required
 

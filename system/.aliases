@@ -150,4 +150,4 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # tmux + iTerm
 alias itn="tmux -CC new -s "
-alias it="tmux -CC -t "
+alias it="tmux -CC at -t "

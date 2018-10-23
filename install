@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo '😑'
+
 if test $(which brew); then
   brew update
 fi
@@ -14,3 +16,5 @@ yes | /bin/cp -rf ~/.dotfiles/vim/* ~/.vim/
 
 # rm $HOME/Library/Application Support/Code/User/settings.json
 # ln -sf ~/.dotfiles/vscode/settings.json $HOME/Library/Application Support/Code/User/
+
+echo '🤞'
