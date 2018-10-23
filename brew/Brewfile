@@ -1,0 +1,17 @@
+brew "coreutils"
+brew "node"
+brew "git" 
+brew "mysql"
+brew "tmux"
+brew "z"
+brew "ag"
+brew "fzf"
+brew "zsh"
+brew "thefuck"
+brew "imagemagick"
+brew "ffmpeg", args: ["with-libvpx"]
+brew "vim", link: true, args: ["with-override-system-vi"] # brew unlink vim && brew link vim
+
+cask "docker"
+cask "slack"
+cask "lastfm"
