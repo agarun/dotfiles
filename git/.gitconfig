@@ -24,7 +24,7 @@
 	# Show verbose output about tags, branches or remotes
 	tags = tag -l
 	branches = branch -a
-	branchbros = "for-each-ref --sort=-committerdate --format="%(color:blue)%(authordate:relative) %(color:red)%(authorname) %(color:white)%(color:bold)%(refname:short)" refs/remotes"
+	branchbros = for-each-ref --sort=-committerdate --format='%(color:blue)%(authordate:relative) %(color:red)%(authorname) %(color:white)%(color:bold)%(refname:short)' refs/remotes
 	remotes = remote -v
 
 	# Show my config
