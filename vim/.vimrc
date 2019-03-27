@@ -24,6 +24,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'vim-airline/vim-airline'
 
 " TODO
 " Plugin 'Valloric/YouCompleteMe'
@@ -34,6 +35,7 @@ Plugin 'w0ng/vim-hybrid'
 Plugin 'morhetz/gruvbox'
 Plugin 'sjl/badwolf'
 Plugin 'arcticicestudio/nord-vim'
+Plugin 'dracula/vim'
 
 call vundle#end()            " required
 
@@ -51,7 +53,7 @@ endif
 
 " Themes
 set background=dark
-colorscheme gruvbox
+colorscheme dracula
 
 " NERDTree
 autocmd StdinReadPre * let s:std_in=1
