@@ -1,6 +1,6 @@
 [user]
 	name = Aaron Agarunov
-	email = agarunov.aaron@gmail.com
+	email = agarunoa@mskcc.org
 
 [alias]
 	co = checkout
@@ -40,6 +40,8 @@
 	# Rename branch
 	mvb = branch -m
 
+	# SHow any commits missing from origin
+	mfg = log origin/master..master
 [apply]
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
