@@ -1,0 +1,17 @@
+alt + ` : open -na "Google Chrome"
+
+alt + 1 : open -na "Warp"
+
+alt + 2 : open -na "Visual Studio Code"
+
+alt + w : open -na "Notion"
+
+alt + e : open -na "Beeper"
+
+alt + r : open -na "Spotify"
+
+alt + s : open -na "Slack"
+
+alt + d : open -na "Discord"
+
+alt + q : open -na "thinkorswim"

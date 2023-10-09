@@ -22,20 +22,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'vim-airline/vim-airline'
-
-" TODO
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'itchyny/lightline.vim'
 
 " Themes
-Plugin 'romainl/flattened'
-Plugin 'w0ng/vim-hybrid'
-Plugin 'morhetz/gruvbox'
-Plugin 'sjl/badwolf'
-Plugin 'arcticicestudio/nord-vim'
-Plugin 'dracula/vim'
+Plugin 'haishanh/night-owl.vim'
 
 call vundle#end()            " required
 
@@ -53,7 +43,13 @@ endif
 
 " Themes
 set background=dark
-colorscheme dracula
+syntax enable
+colorscheme night-owl
+let g:lightline = { 'colorscheme': 'nightowl' }
+
+" Config
+set number
+set noswapfile
 
 " NERDTree
 autocmd StdinReadPre * let s:std_in=1

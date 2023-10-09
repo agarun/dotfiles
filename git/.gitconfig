@@ -1,47 +1,30 @@
 [user]
 	name = Aaron Agarunov
-	email = agarunoa@mskcc.org
+	email = agarunov.aaron@gmail.com
+
+[commit]
+	gpgsign = true
 
 [alias]
 	co = checkout
 	cob = checkout -b
-	cp = cherry-pick
-	unstage = reset HEAD
-
-	l = log --pretty=oneline --graph --abbrev-commit
-	l2 = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --graph --abbrev-commit
-	lb = log --all --graph --decorate --oneline --simplify-by-decoration
-
-	# List contributors with number of commits
-	contributors = shortlog --summary --numbered
-
-	# Interactive rebase with the given number of latest commits
-	reb = "!r() { git rebase -i HEAD~$1; }; r"
 
 	# List aliases
 	aliases = config --get-regexp alias
 
+	cp = cherry-pick
+
+	# Log
+	l = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --graph --abbrev-commit
+
+	# Interactive rebase with the given number of latest commits
+	reb = "!r() { git rebase -i HEAD~$1; }; r"
+
 	# Show verbose output about tags, branches or remotes
 	tags = tag -l
-	branches = branch -a
-	branchbros = for-each-ref --sort=-committerdate --format='%(color:blue)%(authordate:relative) %(color:red)%(authorname) %(color:white)%(color:bold)%(refname:short)' refs/remotes
+	branches = for-each-ref --sort=-committerdate --format='%(color:bold blue)%(authordate:relative) %(color:red)%(authorname) %(color:white)%(color:bold)%(refname:short)' refs/heads refs/remotes
 	remotes = remote -v
 
-	# Show my config
-	sc = config --list
-
-	# Show my aliases
-	sa = config --get-regexp alias
-	
-	# Delete branch
-	dellocal = branch -D
-	delremote = push origin --delete
-	
-	# Rename branch
-	mvb = branch -m
-
-	# SHow any commits missing from origin
-	mfg = log origin/master..master
 [apply]
 	# Detect whitespace errors when applying a patch
 	whitespace = fix

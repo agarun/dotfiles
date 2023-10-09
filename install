@@ -1,20 +1,45 @@
 #!/usr/bin/env bash
 
-echo '😑'
+echo '💭… '
+
+current_folder="$(pwd)"
+dotfiles_folder="$HOME/.dotfiles"
+
+if [ "$current_folder" != "$dotfiles_folder" ]; then
+  echo "This project needs to be cloned into the ~/.dotfiles directory"
+fi
+
+echo '☀️… '
 
 if test $(which brew); then
+  brew analytics off
   brew update
 fi
 
-# TODO: https://github.com/caarlos0/dotfiles/blob/master/script/bootstrap etc.
-ln -sf ~/.dotfiles/git/.gitconfig ~
-ln -sf ~/.dotfiles/git/.gitignore ~
-ln -sf ~/.dotfiles/run/.bash_profile ~
-ln -sf ~/.dotfiles/vim/.vimrc ~
-ln -sf ~/.dotfiles/tmux/.tmux.conf ~
+cd ~/.dotfiles/brew
+brew bundle
+cd ..
+
+ln -sfn ~/.dotfiles/git/.gitconfig ~
+ln -sfn ~/.dotfiles/git/.gitignore ~
+
+ln -sfn ~/.dotfiles/run/.bash_profile ~
+
+ln -sfn ~/.dotfiles/vim/.vimrc ~
 yes | /bin/cp -rf ~/.dotfiles/vim/* ~/.vim/
 
-# rm $HOME/Library/Application Support/Code/User/settings.json
-# ln -sf ~/.dotfiles/vscode/settings.json $HOME/Library/Application Support/Code/User/
+ln -sfn ~/.dotfiles/tmux/.tmux.conf ~
 
-echo '🤞'
+if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  # WSL2 / Linux
+  rm -rf /mnt/c/Users/Aaron/AppData/Roaming/Code/User/settings.json
+  cp ~/.dotfiles/vscode/settings.json /mnt/c/Users/Aaron/AppData/Roaming/Code/User/settings.json
+elif [ "$(uname)" == "Darwin" ]; then
+  # MacOS
+  rm -rf $HOME/Library/Application Support/Code/User/settings.json
+  cp ~/.dotfiles/vscode/settings.json $HOME/Library/Application Support/Code/User/settings.json
+
+  ln -sfn ~/.dotfiles/.skhdrc ~
+fi
+
+echo '😎'

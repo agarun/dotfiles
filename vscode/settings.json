@@ -1,10 +1,14 @@
 {
     "atomKeymap.promptV3Features": true,
     "editor.multiCursorModifier": "ctrlCmd",
-    "editor.formatOnPaste": true,
-    "[javascript]": {
-        "editor.formatOnSave": true
-    },
+    "editor.formatOnSave": true,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "boundary",
+    "editor.renderIndentGuides": true,
+    "editor.renderControlCharacters": true,
+    "editor.fontFamily": "'Dank Mono', 'Fira Code', Menlo, Monaco, 'Courier New', monospace, 'Apple Color Emoji'",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 13,
     "prettier.singleQuote": true,
     "window.zoomLevel": 0,
     "eslint.alwaysShowStatus": true,
@@ -16,32 +20,7 @@
         "**/.DS_Store": true,
         "**/*.pyc": true
     },
-    "python.linting.pylintArgs": [
-        "--disable=import-error"
-    ],
     "workbench.colorTheme": "Night Owl",
-    "editor.fontFamily": "'Dank Mono', 'Fira Code', Menlo, Monaco, 'Courier New', monospace, 'Apple Color Emoji'",
-    "editor.fontLigatures": true,
     "workbench.activityBar.visible": true,
-    "editor.minimap.enabled": false,
-    "editor.renderWhitespace": "boundary",
-    "editor.renderIndentGuides": true,
-    "editor.renderControlCharacters": true,
-    "workbench.sideBar.location": "right",
-    "workbench.panel.defaultLocation": "right",
-    "gitlens.historyExplorer.location": "scm",
-    "gitlens.resultsExplorer.location": "scm",
-    "gitlens.advanced.messages": {
-        "suppressShowKeyBindingsNotice": true
-    },
-    // Night Owl, Sarah Drasner's high contrast sidebar config.
-    "workbench.colorCustomizations": {
-        "activityBar.background": "#000C1D",
-        "activityBar.border": "#102a44",
-        "sideBar.background": "#001122",
-        "sideBar.border": "#102a44",
-        "sideBar.foreground": "#8BADC1"
-    },
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "editor.fontSize": 13
+    "javascript.updateImportsOnFileMove.enabled": "always"
 }
