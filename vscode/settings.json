@@ -1,26 +1,31 @@
 {
-    "atomKeymap.promptV3Features": true,
-    "editor.multiCursorModifier": "ctrlCmd",
-    "editor.formatOnSave": true,
-    "editor.minimap.enabled": false,
-    "editor.renderWhitespace": "boundary",
-    "editor.renderIndentGuides": true,
-    "editor.renderControlCharacters": true,
-    "editor.fontFamily": "'Dank Mono', 'Fira Code', Menlo, Monaco, 'Courier New', monospace, 'Apple Color Emoji'",
-    "editor.fontLigatures": true,
-    "editor.fontSize": 13,
-    "prettier.singleQuote": true,
-    "window.zoomLevel": 0,
-    "eslint.alwaysShowStatus": true,
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "**/*.pyc": true
-    },
-    "workbench.colorTheme": "Night Owl",
-    "workbench.activityBar.visible": true,
-    "javascript.updateImportsOnFileMove.enabled": "always"
+  "atomKeymap.promptV3Features": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "boundary",
+  "editor.renderIndentGuides": true,
+  "editor.renderControlCharacters": true,
+  "editor.fontFamily": "'JetBrains Mono', monospace, 'Apple Color Emoji'",
+  "[plaintext][markdown][json]": {
+    "editor.fontFamily": "'Fantasque Sans Mono', monospace, 'Apple Color Emoji'"
+  },
+  "markdown.preview.fontFamily": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, sans-serif",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "prettier.singleQuote": true,
+  "window.zoomLevel": 2,
+  "eslint.alwaysShowStatus": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/*.pyc": true
+  },
+  "workbench.colorTheme": "Night Owl (No Italics)",
+  "workbench.activityBar.visible": true,
+  "javascript.updateImportsOnFileMove.enabled": "always"
 }
