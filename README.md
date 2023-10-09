@@ -34,6 +34,8 @@
 - [PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/install) - global hotkeys ("Keyboard Manager"), color picker
 - [Insomnia](https://insomnia.rest/download) - web dev
 - [AHK](https://www.autohotkey.com/)
+- [Fan Control](https://github.com/Rem0o/FanControl.Releases)
+- [EarTrumpet](https://eartrumpet.app/)
 
 # Apps I don't use anymore
 
