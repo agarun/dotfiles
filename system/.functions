@@ -26,3 +26,37 @@ if [ $? -eq 0 ]; then
 		git diff --no-index --color-words "$@";
 	}
 fi;
+
+ssh-setup() {
+	if [ $# -ne 1 ]; then
+		echo "Usage: ssh-login-setup user@hostname"
+		return 1
+	fi
+
+	remote_host=$1
+	ssh_dir=~/.ssh
+	key_file="$ssh_dir/id_rsa"
+
+	# Check if the key file exists
+	if [ ! -f "$key_file" ]; then
+		# Generate SSH key pair if it doesn't exist
+		ssh-keygen -t rsa -b 2048 -f "$key_file"
+	fi
+
+	# Check if the hostname is listed in the key file
+	if ! grep -q "Host $remote_host" "$key_file"; then
+		# Append the host information to the key file
+		echo "Host $remote_host" >> "$key_file"
+		echo "  StrictHostKeyChecking no" >> "$key_file"
+	fi
+
+	# Copy public key to the remote server
+	ssh-copy-id $remote_host
+
+	# NOTE: If this is your first time setting up the remote, you may need to
+	# update the permissions for your remote server's `.ssh` directory files: (https://superuser.com/a/1145465)
+	# YOURUSER=
+	# chown $YOURUSER:$YOURUSER /home/$YOURUSER/{.,.ssh/,.ssh/authorized_keys}
+	# chmod u+rwX,go-rwX,-t /home/$YOURUSER/{.ssh/,.ssh/authorized_keys}
+	# chmod go-w /home/$YOURUSER/
+}
