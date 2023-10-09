@@ -41,7 +41,8 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   # Setup Git for Windows
   # https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-git (credentials) + gpg keys
   git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe"
-  echo "pinentry-program \"/mnt/c/Program Files/Git/usr/bin/pinentry.exe\"" > ~/.gnupg/gpg-agent.conf
+  echo "pinentry-program \"/mnt/c/Program Files/Git/usr/bin/pinentry.exe\" --timeout 0" > ~/.gnupg/gpg-agent.conf
+  echo "pinentry-timeout 0" >> ~/.gnupg/gpg-agent.conf
 elif [ "$(uname)" == "Darwin" ]; then
   # MacOS
   # VS Code
