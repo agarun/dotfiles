@@ -5,6 +5,9 @@
 [commit]
 	gpgsign = true
 
+[includeIf "gitdir:~/Projects/work/"]
+	path = ~/.gitconfig-work
+
 [alias]
 	co = checkout
 	cob = checkout -b

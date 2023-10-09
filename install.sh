@@ -21,6 +21,7 @@ brew bundle
 cd ..
 
 ln -sfn ~/.dotfiles/git/.gitconfig ~
+ln -sfn ~/.dotfiles/git/.gitconfig-work ~
 ln -sfn ~/.dotfiles/git/.gitignore ~
 
 ln -sfn ~/.dotfiles/run/.bash_profile ~
@@ -35,8 +36,10 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   # VS Code
   rm -rf /mnt/c/Users/Aaron/AppData/Roaming/Code/User/settings.json
   cp ~/.dotfiles/vscode/settings.json /mnt/c/Users/Aaron/AppData/Roaming/Code/User/settings.json
+  # Setup Git for Windows
   # https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-git
   git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe"
+  echo "pinentry-program \"/mnt/c/Program Files/Git/usr/bin/pinentry.exe\"" > ~/.gnupg/gpg-agent.conf
 elif [ "$(uname)" == "Darwin" ]; then
   # MacOS
   # VS Code

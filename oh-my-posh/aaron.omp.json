@@ -51,9 +51,13 @@
       "alignment": "right",
       "segments": [
         {
-          "foreground": "#e9f6ff",
-          "style": "plain",
-          "template": " {{ .CurrentDate | date .Format }} ",
+          "background": "#2a2a2a",
+          "foreground": "#fafafa",
+          "properties": {
+            "time_format": "15:04:05"
+          },
+          "style": "diamond",
+          "template": "<d>{{ .CurrentDate | date .Format }}</>",
           "type": "time"
         }
       ],

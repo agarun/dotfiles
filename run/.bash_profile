@@ -16,4 +16,4 @@ for DOTFILE in ~/.dotfiles/system/.*; do
 done
 
 # oh-my-posh theme
-eval "`oh-my-posh init bash --config ~/Projects/dotfiles/oh-my-posh/aaron.omp.json`"
+eval "`oh-my-posh init bash --config ~/.dotfiles/oh-my-posh/aaron.omp.json`"
