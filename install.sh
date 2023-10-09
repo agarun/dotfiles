@@ -27,7 +27,9 @@ ln -sfn ~/.dotfiles/git/.gitignore ~
 ln -sfn ~/.dotfiles/run/.bash_profile ~
 
 ln -sfn ~/.dotfiles/vim/.vimrc ~
-yes | /bin/cp -rf ~/.dotfiles/vim/* ~/.vim/
+if [ "$(find ~/.dotfiles/vim/ -mindepth 1 -type d)" ]; then
+  yes | /bin/cp -rf ~/.dotfiles/vim/* ~/.vim/
+fi
 
 ln -sfn ~/.dotfiles/tmux/.tmux.conf ~
 
@@ -37,7 +39,7 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   rm -rf /mnt/c/Users/Aaron/AppData/Roaming/Code/User/settings.json
   cp ~/.dotfiles/vscode/settings.json /mnt/c/Users/Aaron/AppData/Roaming/Code/User/settings.json
   # Setup Git for Windows
-  # https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-git
+  # https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-git (credentials) + gpg keys
   git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe"
   echo "pinentry-program \"/mnt/c/Program Files/Git/usr/bin/pinentry.exe\"" > ~/.gnupg/gpg-agent.conf
 elif [ "$(uname)" == "Darwin" ]; then

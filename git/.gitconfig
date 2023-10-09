@@ -5,7 +5,8 @@
 [commit]
 	gpgsign = true
 
-[includeIf "gitdir:~/Projects/work/"]
+# Edit work dir below and edit .gitconfig-work contents
+[includeIf "gitdir:~/Projects/Work/"]
 	path = ~/.gitconfig-work
 
 [alias]
