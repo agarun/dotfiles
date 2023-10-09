@@ -42,10 +42,16 @@ if should_plugin_install == 1
 endif
 
 " Themes
-set background=dark
+if (has("termguicolors"))
+    set termguicolors
+endif
 syntax enable
 colorscheme night-owl
 let g:lightline = { 'colorscheme': 'nightowl' }
+
+highlight SpecialKey guifg=#444444
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·
+set list
 
 " Config
 set number

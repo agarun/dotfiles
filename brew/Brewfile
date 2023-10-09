@@ -1,5 +1,5 @@
 tap "homebrew/bundle"
 brew "z"
-brew "vim", link: true, args: ["with-override-system-vi"] # brew unlink vim && brew link vim
+brew "vim", link: true
 tap "jandedobbeleer/oh-my-posh"
 brew "jandedobbeleer/oh-my-posh/oh-my-posh"
