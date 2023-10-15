@@ -3,7 +3,11 @@
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
   "editor.minimap.enabled": false,
+  "editor.guides.bracketPairs": "active",
   "editor.renderWhitespace": "boundary",
   "editor.renderIndentGuides": true,
   "editor.renderControlCharacters": true,

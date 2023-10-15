@@ -27,6 +27,7 @@
 - [pure-paste](https://sindresorhus.com/pure-paste)
 - [Raycast](https://www.raycast.com/) - spotlight replacement
 - [Sequel Ace](https://github.com/Sequel-Ace/Sequel-Ace) - SQL client
+- [GitUp](https://github.com/git-up/GitUp) - git client
 
 # Windows applications
 
@@ -36,9 +37,11 @@
 - [AHK](https://www.autohotkey.com/)
 - [Fan Control](https://github.com/Rem0o/FanControl.Releases)
 - [EarTrumpet](https://eartrumpet.app/)
+- Adobe Suite, Figma, DaVinci Resolve - editing, graphics, etc.
 
 # Apps I don't use anymore
 
+- [Orion](https://browser.kagi.com/), [Arc](https://arc.net/) - browser
 - [Karabiner Elements](https://github.com/pqrs-org/Karabiner-Elements)
 - [Ferdium](https://github.com/ferdium/ferdium-app) - chats
 - [Kitty](https://github.com/kovidgoyal/kitty), iTerm2 - terminal
@@ -52,4 +55,5 @@
 - [Catchmouse](https://github.com/round/CatchMouse) - moving my pointer to monitors
 - [espanso](https://github.com/espanso/espanso) - text expander
 - Mission Control Plus
+- [Fig](https://fig.io/)
 - Fonts (in some order of use and preference) - JetBrains Mono, Fantasque Sans Mono, Iosevka, Berkeley Mono, Dank Mono, Hack, Consolas, Monolisa, [Maple](https://github.com/subframe7536/maple-font), [Hasklig](https://github.com/i-tu/Hasklig), PragmataPro, Red Hat Mono, IBM Plex Mono, Fira, Inconsolata Nerd Font Mono, Operator Mono, [agave](https://github.com/blobject/agave), all w/ matching [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
