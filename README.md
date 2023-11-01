@@ -11,6 +11,7 @@
 - [oh-my-posh](https://github.com/jandedobbeleer/oh-my-posh) - prompt themes
 - [Fork](https://git-fork.com/) - git client
 - [TablePlus](https://tableplus.com/) - DB client
+- [OBS](https://obsproject.com/) - screen recording
 
 # Mac OS applications
 
@@ -41,7 +42,7 @@
 
 # Apps I don't use anymore
 
-- [Orion](https://browser.kagi.com/), [Arc](https://arc.net/) - browser
+- [Orion](https://browser.kagi.com/), [Arc](https://arc.net/). [Thorium](https://github.com/Alex313031/Thorium) - browser
 - [Karabiner Elements](https://github.com/pqrs-org/Karabiner-Elements)
 - [Ferdium](https://github.com/ferdium/ferdium-app) - chats
 - [Kitty](https://github.com/kovidgoyal/kitty), iTerm2 - terminal
@@ -56,4 +57,4 @@
 - [espanso](https://github.com/espanso/espanso) - text expander
 - Mission Control Plus
 - [Fig](https://fig.io/)
-- Fonts (in some order of use and preference) - JetBrains Mono, Fantasque Sans Mono, Iosevka, Berkeley Mono, Dank Mono, Hack, Consolas, Monolisa, [Maple](https://github.com/subframe7536/maple-font), [Hasklig](https://github.com/i-tu/Hasklig), PragmataPro, Red Hat Mono, IBM Plex Mono, Fira, Inconsolata Nerd Font Mono, Operator Mono, [agave](https://github.com/blobject/agave), all w/ matching [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
+- Fonts (in some order of use and preference) - JetBrains Mono, Fantasque Sans Mono, [Geist](https://github.com/vercel/geist-font), Iosevka, Berkeley Mono, Dank Mono, Hack, Consolas, Monolisa, [Maple](https://github.com/subframe7536/maple-font), [Hasklig](https://github.com/i-tu/Hasklig), PragmataPro, Red Hat Mono, IBM Plex Mono, Fira, Inconsolata Nerd Font Mono, Operator Mono, [agave](https://github.com/blobject/agave), all with matching [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
