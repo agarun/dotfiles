@@ -6,13 +6,14 @@
 - [WhatPulse](https://whatpulse.org/intentional) - keeb tracking
 - [f.lux](https://justgetflux.com/)
 - [Notion](https://www.notion.so/)
-- [foobar2k](https://www.foobar2000.org/), Spotify - music
+- [foobar2k](https://www.foobar2000.org/), [Spotify](https://github.com/SpotX-Official/SpotX) - music
 - [Beeper](https://www.beeper.com/) - chats
 - [oh-my-posh](https://github.com/jandedobbeleer/oh-my-posh) - prompt themes
 - [Fork](https://git-fork.com/) - git client
 - [TablePlus](https://tableplus.com/) - DB client
 - [OBS](https://obsproject.com/) - screen recording
 - [Requestly](https://github.com/requestly/requestly) - web dev
+- Adobe Suite, Figma, DaVinci Resolve - editing, photography, graphics, design
 
 # Mac OS applications
 
@@ -22,7 +23,7 @@
 - [skhd](https://github.com/koekeishiya/skhd) - global hotkeys
 - [OrbStack](https://orbstack.dev/) - dockering
 - [Paw](https://paw.cloud/) - web dev
-- [noTunes](https://github.com/tombonez/noTunes) - disable iTunes etc.
+- [noTunes](https://github.com/tombonez/noTunes) - disable iTunes
 - [alt-tab-macos](https://github.com/lwouis/alt-tab-macos)
 - [itsycal](https://www.mowglii.com/itsycal/)
 - [pure-paste](https://sindresorhus.com/pure-paste)
@@ -39,7 +40,7 @@
 - [AHK](https://www.autohotkey.com/)
 - [Fan Control](https://github.com/Rem0o/FanControl.Releases)
 - [EarTrumpet](https://eartrumpet.app/)
-- Adobe Suite, Figma, DaVinci Resolve - editing, graphics, etc.
+- [Peace GUI](https://sourceforge.net/projects/peace-equalizer-apo-extension/) / [Equalizer APO](https://sourceforge.net/projects/equalizerapo/) - audio eq
 
 # Apps I don't use anymore
 
