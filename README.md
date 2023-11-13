@@ -12,6 +12,7 @@
 - [Fork](https://git-fork.com/) - git client
 - [TablePlus](https://tableplus.com/) - DB client
 - [OBS](https://obsproject.com/) - screen recording
+- [Requestly](https://github.com/requestly/requestly) - web dev
 
 # Mac OS applications
 
@@ -21,7 +22,6 @@
 - [skhd](https://github.com/koekeishiya/skhd) - global hotkeys
 - [OrbStack](https://orbstack.dev/) - dockering
 - [Paw](https://paw.cloud/) - web dev
-- [Requestly](https://github.com/requestly/requestly) - web dev
 - [noTunes](https://github.com/tombonez/noTunes) - disable iTunes etc.
 - [alt-tab-macos](https://github.com/lwouis/alt-tab-macos)
 - [itsycal](https://www.mowglii.com/itsycal/)
@@ -29,6 +29,7 @@
 - [Raycast](https://www.raycast.com/) - spotlight replacement
 - [Sequel Ace](https://github.com/Sequel-Ace/Sequel-Ace) - SQL client
 - [GitUp](https://github.com/git-up/GitUp) - git client
+- [TopNotch](https://topnotch.app/) - stuff to deal with Macbooks
 
 # Windows applications
 
