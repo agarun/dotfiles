@@ -1,0 +1,48 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "ctrl+shift+l",
+    "command": "editor.action.selectHighlights",
+    "when": "editorFocus"
+  },
+  {
+    "key": "cmd+shift+l",
+    "command": "editor.action.selectHighlights",
+    "when": "editorFocus",
+    "mac": true
+  },
+  {
+    "key": "ctrl+;",
+    "command": "editor.action.goToDeclaration",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+;",
+    "command": "editor.action.goToDeclaration",
+    "when": "editorTextFocus",
+    "mac": true
+  },
+  {
+    "key": "ctrl+shift+[",
+    "command": "editor.action.smartSelect.expand",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+shift+[",
+    "command": "editor.action.smartSelect.expand",
+    "when": "editorTextFocus",
+    "mac": true
+  },
+  {
+    "key": "ctrl+shift+]",
+    "command": "editor.action.smartSelect.shrink",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+shift+]",
+    "command": "editor.action.smartSelect.shrink",
+    "when": "editorTextFocus",
+    "mac": true
+  }
+  // CTRL + ALT + ⬆️ or ⬇️ to spawn a multi-line cursor on the same spot  (default)
+]

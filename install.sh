@@ -38,6 +38,8 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   # VS Code
   rm -rf /mnt/c/Users/Aaron/AppData/Roaming/Code/User/settings.json
   cp ~/.dotfiles/vscode/settings.json /mnt/c/Users/Aaron/AppData/Roaming/Code/User/settings.json
+  rm -rf /mnt/c/Users/Aaron/AppData/Roaming/Code/User/keybindings.json
+  cp ~/.dotfiles/vscode/keybindings.json /mnt/c/Users/Aaron/AppData/Roaming/Code/User/keybindings.json
   # Setup Git for Windows
   # https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-git (credentials) + gpg keys
   git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe"
@@ -48,6 +50,8 @@ elif [ "$(uname)" == "Darwin" ]; then
   # VS Code
   rm -rf $HOME/Library/Application Support/Code/User/settings.json
   cp ~/.dotfiles/vscode/settings.json $HOME/Library/Application Support/Code/User/settings.json
+  rm -rf $HOME/Library/Application Support/Code/User/keybindings.json
+  cp ~/.dotfiles/vscode/keybindings.json $HOME/Library/Application Support/Code/User/keybindings.json
   # skhd
   ln -sfn ~/.dotfiles/.skhdrc ~
 fi
