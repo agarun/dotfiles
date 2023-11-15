@@ -30,7 +30,9 @@
 - [Raycast](https://www.raycast.com/) - spotlight replacement
 - [Sequel Ace](https://github.com/Sequel-Ace/Sequel-Ace) - SQL client
 - [GitUp](https://github.com/git-up/GitUp) - git client
-- [TopNotch](https://topnotch.app/) - stuff to deal with Macbooks
+- [TopNotch](https://topnotch.app/) - dealing with Macbook notch
+- [Shortcat](https://shortcatapp.com/) - avoiding my mouse
+- [IINA](https://iina.io/) - media player
 
 # Windows applications
 
@@ -41,6 +43,7 @@
 - [Fan Control](https://github.com/Rem0o/FanControl.Releases)
 - [EarTrumpet](https://eartrumpet.app/)
 - [Peace GUI](https://sourceforge.net/projects/peace-equalizer-apo-extension/) / [Equalizer APO](https://sourceforge.net/projects/equalizerapo/) - audio eq
+- [LosslessCut](https://github.com/mifi/lossless-cut) - video clipping
 
 # Apps I don't use anymore
 
@@ -53,7 +56,7 @@
 - ColorSlurp, Sip - global color picker
 - pyenv, nvm, [fnm](https://github.com/Schniz/fnm) - tool version management
 - [Spark](https://www.shadowlab.org/softwares/spark.php) - global hotkeys
-- [Shortcat](https://shortcatapp.com/) - avoiding my mouse
+- [Wooshy](https://wooshy.app/), [Homerow](https://www.homerow.app/) - avoiding my mouse
 - [Spectacles](https://www.spectacleapp.com/) - tiling window manager
 - [Catchmouse](https://github.com/round/CatchMouse) - moving my pointer to monitors
 - [espanso](https://github.com/espanso/espanso) - text expander

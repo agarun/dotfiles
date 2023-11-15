@@ -1,17 +1,32 @@
-alt + ` : open -na "Google Chrome"
+# cmd - m, you would hold down the Command key first and then press the "m" key
+# cmd + m, you would press both the Command key and the "m" key at the same time
 
-alt + 1 : open -na "Warp"
+# 0x32 is the keycode for a backtick: `
+alt - 0x32: open -a "Google Chrome"
+cmd + alt - 0x32: open -a "Google Chrome" --args --profile-directory="Work"
 
-alt + 2 : open -na "Visual Studio Code"
+# Terminal
+alt - 1: open -a "Warp"
 
-alt + w : open -na "Notion"
+alt - 2: open -a "Visual Studio Code"
 
-alt + e : open -na "Beeper"
+# Email
+alt - 3: open -a "Microsoft Outlook"
 
-alt + r : open -na "Spotify"
+# Database tools
+alt - 4: open -a "TablePlus"
 
-alt + s : open -na "Slack"
+# Notes
+alt - w: open -a "Notion"
 
-alt + d : open -na "Discord"
+alt - e: open -a "Beeper"
 
-alt + q : open -na "thinkorswim"
+alt - r: open -a "Spotify"
+
+alt - s: open -a "Slack"
+
+alt - d: open -a "Discord"
+
+alt - q: open -a "thinkorswim"
+
+alt - f: open -a "Finder"

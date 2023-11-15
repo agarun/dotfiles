@@ -3,7 +3,7 @@
 echo '💭… '
 
 current_folder="$(pwd)"
-dotfiles_folder="$HOME/.dotfiles"
+dotfiles_folder=""$HOME/.dotfiles""
 
 if [ "$current_folder" != "$dotfiles_folder" ]; then
   echo "This project needs to be cloned into the ~/.dotfiles directory"
@@ -48,10 +48,10 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 elif [ "$(uname)" == "Darwin" ]; then
   # MacOS
   # VS Code
-  rm -rf $HOME/Library/Application Support/Code/User/settings.json
-  cp ~/.dotfiles/vscode/settings.json $HOME/Library/Application Support/Code/User/settings.json
-  rm -rf $HOME/Library/Application Support/Code/User/keybindings.json
-  cp ~/.dotfiles/vscode/keybindings.json $HOME/Library/Application Support/Code/User/keybindings.json
+  rm -rf "$HOME/Library/Application Support/Code/User/settings.json"
+  cp ~/.dotfiles/vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
+  rm -rf "$HOME/Library/Application Support/Code/User/keybindings.json"
+  cp ~/.dotfiles/vscode/keybindings.json "$HOME/Library/Application Support/Code/User/keybindings.json"
   # skhd
   ln -sfn ~/.dotfiles/.skhdrc ~
 fi
