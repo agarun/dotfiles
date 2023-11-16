@@ -44,6 +44,7 @@
 - [EarTrumpet](https://eartrumpet.app/)
 - [Peace GUI](https://sourceforge.net/projects/peace-equalizer-apo-extension/) / [Equalizer APO](https://sourceforge.net/projects/equalizerapo/) - audio eq
 - [LosslessCut](https://github.com/mifi/lossless-cut) - video clipping
+- [AutoHotkey](https://www.autohotkey.com/) v2
 
 # Apps I don't use anymore
 
