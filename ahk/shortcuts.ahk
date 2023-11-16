@@ -54,7 +54,7 @@
         Send, ^#1 ; Alt + ` is Chrome, but it's in position 1
         Return
     }
-    else if WinExist("ahk_exe Code.exe") {
+    else if (ActiveProcessName = "Code.exe") {
         ; Remap the hotkey to Ctrl + Win + 3 for Chrome
         Send, ^#3 ; Alt + 2 is Code, but it's in position 3
         Return
