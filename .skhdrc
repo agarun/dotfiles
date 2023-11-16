@@ -30,3 +30,6 @@ alt - d: open -a "Discord"
 alt - q: open -a "thinkorswim"
 
 alt - f: open -a "Finder"
+
+# Most used screenshot hotkey mapped to Windows screenshot hotkey
+ctrl + shift - s: /usr/sbin/screencapture -c -i
