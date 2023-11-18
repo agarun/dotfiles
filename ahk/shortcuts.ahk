@@ -41,6 +41,14 @@
     }
     return
 
+^!a::
+    If WinExist("ahk_exe ChatGPT.exe") { ; AI
+        WinActivate
+    } else {
+        Run, "C:\Program Files\ChatGPT\ChatGPT.exe"
+    }
+    return
+
 ; Replicate macos behavior to cycle through windows (cmd + `)
 ; https://superuser.com/questions/1604626/easy-way-to-switch-between-two-windows-of-the-same-app-in-windows-10
 ^`::

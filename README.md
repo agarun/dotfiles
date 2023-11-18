@@ -11,8 +11,9 @@
 - [oh-my-posh](https://github.com/jandedobbeleer/oh-my-posh) - prompt themes
 - [Fork](https://git-fork.com/) - git client
 - [TablePlus](https://tableplus.com/) - DB client
-- [OBS](https://obsproject.com/) - screen recording
+- [Bruno](https://github.com/usebruno/bruno) - API client
 - [Requestly](https://github.com/requestly/requestly) - web dev
+- [OBS](https://obsproject.com/) - screen recording
 - Adobe Suite, Figma, DaVinci Resolve - editing, photography, graphics, design
 
 # Mac OS applications
@@ -22,7 +23,7 @@
 - [Pika](https://github.com/superhighfives/pika) - global color picker
 - [skhd](https://github.com/koekeishiya/skhd) - global hotkeys
 - [OrbStack](https://orbstack.dev/) - dockering
-- [Paw](https://paw.cloud/) - web dev
+- [Paw](https://paw.cloud/) - API client
 - [noTunes](https://github.com/tombonez/noTunes) - disable iTunes
 - [alt-tab-macos](https://github.com/lwouis/alt-tab-macos)
 - [itsycal](https://www.mowglii.com/itsycal/)
@@ -38,7 +39,6 @@
 
 - [Windows Terminal](https://github.com/microsoft/terminal) - terminal
 - [PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/install) - global hotkeys ("Keyboard Manager"), color picker
-- [Insomnia](https://insomnia.rest/download) - web dev
 - [AHK](https://www.autohotkey.com/)
 - [Fan Control](https://github.com/Rem0o/FanControl.Releases)
 - [EarTrumpet](https://eartrumpet.app/)
@@ -49,6 +49,7 @@
 # Apps I don't use anymore
 
 - [Orion](https://browser.kagi.com/), [Arc](https://arc.net/). [Thorium](https://github.com/Alex313031/Thorium) - browser
+- [Insomnia](https://insomnia.rest/download), [Postman](https://www.postman.com/) - API client
 - [Karabiner Elements](https://github.com/pqrs-org/Karabiner-Elements)
 - [Ferdium](https://github.com/ferdium/ferdium-app) - chats
 - [Kitty](https://github.com/kovidgoyal/kitty), iTerm2 - terminal

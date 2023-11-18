@@ -31,5 +31,7 @@ alt - q: open -a "thinkorswim"
 
 alt - f: open -a "Finder"
 
-# Most used screenshot hotkey mapped to Windows screenshot hotkey
+cmd + alt - a: open -a "ChatGPT"
+
+# Windows screenshot hotkey as a MacOS screenshot hotkey
 ctrl + shift - s: /usr/sbin/screencapture -c -i
