@@ -6,7 +6,7 @@
 - [WhatPulse](https://whatpulse.org/intentional) - keeb tracking
 - [f.lux](https://justgetflux.com/)
 - [Notion](https://www.notion.so/)
-- [foobar2k](https://www.foobar2000.org/), [Spotify](https://github.com/SpotX-Official/SpotX) - music
+- [foobar2k](https://www.foobar2000.org/) with [georgia-reborn](https://github.com/TT-ReBORN/Georgia-ReBORN), [Spotify](https://github.com/SpotX-Official/SpotX) - music
 - [Beeper](https://www.beeper.com/) - chats
 - [oh-my-posh](https://github.com/jandedobbeleer/oh-my-posh) - prompt themes
 - [Fork](https://git-fork.com/) - git client
