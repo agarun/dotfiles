@@ -37,7 +37,7 @@
 
 # Windows applications
 
-- [Windows Terminal](https://github.com/microsoft/terminal) - terminal
+- [WezTerm](https://wezfurlong.org/wezterm/index.html) - terminal
 - [PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/install) - global hotkeys ("Keyboard Manager"), color picker
 - [AHK](https://www.autohotkey.com/)
 - [Fan Control](https://github.com/Rem0o/FanControl.Releases)
@@ -48,6 +48,7 @@
 
 # Apps I don't use anymore
 
+- [Windows Terminal](https://github.com/microsoft/terminal) - terminal
 - [Orion](https://browser.kagi.com/), [Arc](https://arc.net/). [Thorium](https://github.com/Alex313031/Thorium) - browser
 - [Insomnia](https://insomnia.rest/download), [Postman](https://www.postman.com/) - API client
 - [Karabiner Elements](https://github.com/pqrs-org/Karabiner-Elements)
