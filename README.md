@@ -34,6 +34,7 @@
 - [TopNotch](https://topnotch.app/) - dealing with Macbook notch
 - [Shortcat](https://shortcatapp.com/) - avoiding my mouse
 - [IINA](https://iina.io/) - media player
+- [onigiri](https://apps.apple.com/us/app/onigiri-minimal-timer/id1639917298?mt=12) - timer
 
 # Windows applications
 
