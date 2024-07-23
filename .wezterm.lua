@@ -16,9 +16,29 @@ config.skip_close_confirmation_for_processes_named = {
   'wslhost.exe',
 }
 config.keys = {
-  -- "Turn off the default ctrl+v "input the next character literally",
-  -- because it works badly with the Windows Clipboard Manager" - https://github.com/wez/wezterm/issues/3510
-  { key = 'v', mods = 'CTRL', action = wezterm.action.Nop },
+  {
+      key = 'c',
+      mods = 'CTRL',
+      action = wezterm.action_callback(function(window, pane)
+          selection_text = window:get_selection_text_for_pane(pane)
+          is_selection_active = string.len(selection_text) ~= 0
+          if is_selection_active then
+              window:perform_action(wezterm.action.CopyTo('ClipboardAndPrimarySelection'), pane)
+          else
+              window:perform_action(wezterm.action.SendKey{ key='c', mods='CTRL' }, pane)
+          end
+      end),
+  },
+  {
+    key = 'v',
+    mods = 'CTRL',
+    action = wezterm.action { PasteFrom = 'Clipboard' }
+  },
+  {
+    key = 'q',
+    mods = 'CTRL',
+    action = wezterm.action.QuitApplication
+  },
   -- Close current pane without confirmation
   {
     key = 'w',
