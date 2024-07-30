@@ -32,7 +32,8 @@
 - [Sequel Ace](https://github.com/Sequel-Ace/Sequel-Ace) - SQL client
 - [GitUp](https://github.com/git-up/GitUp) - git client
 - [TopNotch](https://topnotch.app/) - dealing with Macbook notch
-- [Shortcat](https://shortcatapp.com/) - avoiding my mouse
+- [Shortcat](https://shortcatapp.com/) - avoiding my mouse  
+- [Mos](https://github.com/Caldis/Mos) - mouse scrolling  
 - [IINA](https://iina.io/) - media player
 - [onigiri](https://apps.apple.com/us/app/onigiri-minimal-timer/id1639917298?mt=12) - timer
 
