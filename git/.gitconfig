@@ -23,6 +23,8 @@
 
 	# Interactive rebase with the given number of latest commits
 	reb = "!r() { git rebase -i HEAD~$1; }; r"
+	# Preserve commit date and author when rebasing
+	rebp = "!r() { git -c rebase.instructionFormat='%s%nexec GIT_COMMITTER_DATE=\"%cD\" GIT_COMMITTER_NAME=\"%cn\" GIT_COMMITTER_EMAIL=\"%ce\" git commit --amend --no-edit' rebase $1; }; r"
 
 	# Show verbose output about tags, branches or remotes
 	tags = tag -l
