@@ -32,8 +32,8 @@
 - [Sequel Ace](https://github.com/Sequel-Ace/Sequel-Ace) - SQL client
 - [GitUp](https://github.com/git-up/GitUp) - git client
 - [TopNotch](https://topnotch.app/) - dealing with Macbook notch
-- [Shortcat](https://shortcatapp.com/) - avoiding my mouse  
-- [Mos](https://github.com/Caldis/Mos) - mouse scrolling  
+- [Shortcat](https://shortcatapp.com/) - avoiding my mouse
+- [Mos](https://github.com/Caldis/Mos) - mouse scrolling
 - [IINA](https://iina.io/) - media player
 - [onigiri](https://apps.apple.com/us/app/onigiri-minimal-timer/id1639917298?mt=12) - timer
 
@@ -41,12 +41,14 @@
 
 - [WezTerm](https://wezfurlong.org/wezterm/index.html) - terminal
 - [PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/install) - global hotkeys ("Keyboard Manager"), color picker
+- [whkd](https://github.com/LGUG2Z/whkd)
 - [AHK](https://www.autohotkey.com/)
 - [Fan Control](https://github.com/Rem0o/FanControl.Releases)
 - [EarTrumpet](https://eartrumpet.app/)
 - [Peace GUI](https://sourceforge.net/projects/peace-equalizer-apo-extension/) / [Equalizer APO](https://sourceforge.net/projects/equalizerapo/) - audio eq
 - [LosslessCut](https://github.com/mifi/lossless-cut) - video clipping
 - [AutoHotkey](https://www.autohotkey.com/) v2
+- [vibranceGUI](https://github.com/juv/vibranceGUI)
 
 # Apps I don't use anymore
 
