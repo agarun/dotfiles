@@ -7,7 +7,7 @@
 - [f.lux](https://justgetflux.com/)
 - [Notion](https://www.notion.so/)
 - [foobar2k](https://www.foobar2000.org/) with [georgia-reborn](https://github.com/TT-ReBORN/Georgia-ReBORN), [Spotify](https://github.com/SpotX-Official/SpotX) - music
-- [Beeper](https://www.beeper.com/) - chats
+- [Ferdium](https://github.com/ferdium/ferdium-app) - chats
 - [oh-my-posh](https://github.com/jandedobbeleer/oh-my-posh) - prompt themes
 - [Fork](https://git-fork.com/) - git client
 - [TablePlus](https://tableplus.com/) - DB client
@@ -56,7 +56,7 @@
 - [Orion](https://browser.kagi.com/), [Arc](https://arc.net/). [Thorium](https://github.com/Alex313031/Thorium) - browser
 - [Insomnia](https://insomnia.rest/download), [Postman](https://www.postman.com/) - API client
 - [Karabiner Elements](https://github.com/pqrs-org/Karabiner-Elements)
-- [Ferdium](https://github.com/ferdium/ferdium-app) - chats
+- [Beeper](https://www.beeper.com/) - chats
 - [Kitty](https://github.com/kovidgoyal/kitty), iTerm2 - terminal
 - Sequel Pro, HeidiSQL,
   [Beekeeper](https://github.com/beekeeper-studio/beekeeper-studio/releases) - SQL client

@@ -19,7 +19,7 @@ alt - 4: open -a "TablePlus"
 # Notes
 alt - w: open -a "Notion"
 
-alt - e: open -a "Beeper"
+alt - e: open -a "Ferdium"
 
 alt - r: open -a "Spotify"
 

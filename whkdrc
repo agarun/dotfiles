@@ -1,0 +1,22 @@
+.shell powershell
+
+# VK_OEM_3 is the keycode for a backtick: `
+alt + VK_OEM_3 : if ($wshell.AppActivate('Chrome') -eq $False) { start chrome }
+ctrl + alt + VK_OEM_3 : if ($wshell.AppActivate('Chrome') -eq $False) { Start-Process "chrome.exe" '--profile-directory="Profile 1"' }
+
+alt + 1 : if ($wshell.AppActivate((Get-Process wezterm-gui).Id) -eq $False) { start wezterm-gui.exe }
+alt + 2 : if ($wshell.AppActivate('Code') -eq $False) { start code }
+alt + 3 : if ($wshell.AppActivate('Outlook') -eq $False) { start olk }
+alt + 4 : if ($wshell.AppActivate('TablePlus') -eq $False) { start "C:\Program Files\TablePlus\TablePlus.exe" }
+
+alt + w : if ($wshell.AppActivate('Notion') -eq $False) { start notion }
+alt + e : if ($wshell.AppActivate('Ferdium') -eq $False) { start ferdium }
+alt + r : if ($wshell.AppActivate((Get-Process foobar2000).Id) -eq $False) { start foobar2000.exe }
+alt + shift + r : if ($wshell.AppActivate('Spotify') -eq $False) { start spotify }
+alt + w : if ($wshell.AppActivate('Discord') -eq $False) { start discord }
+alt + q : if ($wshell.AppActivate('thinkorswim') -eq $False) { start "C:\Program Files\thinkorswim\thinkorswim.exe" }
+alt + f : if ($wshell.AppActivate((Get-Process explorer).Id) -eq $False) { start explorer.exe }
+
+# Reload whkd
+alt + o : taskkill /f /im whkd.exe; Start-Process whkd -WindowStyle hidden
+
