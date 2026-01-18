@@ -34,6 +34,9 @@
   },
   "workbench.colorTheme": "Night Owl (No Italics)",
   "workbench.activityBar.visible": true,
+  "workbench.editor.customLabels.patterns": {
+    "**/src/**/index.**": "${dirname}/index.${extname}"
+  },
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "git.confirmSync": false,
