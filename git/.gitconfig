@@ -54,5 +54,16 @@
 	changed = green
 	untracked = cyan
 
+[branch]
+	autosetupmerge = always
+	autosetuprebase = always
+
+[rerere]
+	# record merge conflict resolutions and use them if they appear again
+	# use `git rerere remaining` to see what couldn't be auto-fixed
+	# NOTE: if you make a bad conflict resolution, you can `git rerere forget <file>`
+	#       or `rm -rf .git/rr-cache` or `git cp --no-rerere-autoupdate`
+	enabled = true
+
 [push]
 	autoSetupRemote = true
