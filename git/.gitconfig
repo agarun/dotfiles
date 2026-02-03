@@ -66,4 +66,5 @@
 	enabled = true
 
 [push]
+    default = current
 	autoSetupRemote = true
