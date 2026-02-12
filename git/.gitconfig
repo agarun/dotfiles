@@ -55,8 +55,13 @@
 	untracked = cyan
 
 [branch]
-	autosetupmerge = always
 	autosetuprebase = always
+
+[push]
+	autoSetupRemote = true
+
+[rebase]
+	autostash = true
 
 [rerere]
 	# record merge conflict resolutions and use them if they appear again
@@ -65,6 +70,3 @@
 	#       or `rm -rf .git/rr-cache` or `git cp --no-rerere-autoupdate`
 	enabled = true
 
-[push]
-    default = current
-	autoSetupRemote = true
