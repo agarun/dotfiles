@@ -47,8 +47,7 @@
 - [Orion](https://browser.kagi.com/), [Arc](https://arc.net/), Dia
 - [Insomnia](https://insomnia.rest/download), [Postman](https://www.postman.com/)
 - [Beeper](https://www.beeper.com/)
-- Sequel Pro, HeidiSQL,
-  [Beekeeper](https://github.com/beekeeper-studio/beekeeper-studio/releases)
+- Sequel Pro, HeidiSQL, [Beekeeper](https://github.com/beekeeper-studio/beekeeper-studio/releases)
 - pyenv, nvm, [fnm](https://github.com/Schniz/fnm)
 - [Spark](https://www.shadowlab.org/softwares/spark.php) - global hotkeys
 - [Wooshy](https://wooshy.app/), [Homerow](https://www.homerow.app/)
@@ -69,7 +68,6 @@
 - [espanso](https://github.com/espanso/espanso)
 - [Bruno](https://github.com/usebruno/bruno)
 - [GitUp](https://github.com/git-up/GitUp)
-
 - [Mos](https://github.com/Caldis/Mos)
 
 # Fonts
