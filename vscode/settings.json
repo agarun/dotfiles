@@ -39,8 +39,9 @@
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "git.confirmSync": false,
   "telemetry.telemetryLevel": "off",
   "scm.showHistoryGraph": false,
-  "editor.stickyScroll.enabled": true // settings to try out, love or hate
+  "editor.stickyScroll.enabled": true, // settings to try out, love or hate
+  "git.confirmSync": false,
+  "git.addAICoAuthor": "off"
 }
