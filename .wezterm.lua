@@ -70,12 +70,6 @@ config.keys = {
   { key = 'phys:RightBracket', mods = 'CTRL|SHIFT', action = wezterm.action.ActivateTabRelative(1) },
 }
 
-config.use_fancy_tab_bar = false
-config.tab_bar_at_bottom = false
-config.hide_tab_bar_if_only_one_tab = false
-config.tab_max_width = 40
-config.show_new_tab_button_in_tab_bar = false
-config.show_tab_index_in_tab_bar = false
 local scheme = wezterm.color.get_builtin_schemes()['Raycast_Dark']
 local bg = scheme.background
 local fg = scheme.foreground
@@ -87,6 +81,7 @@ config.colors = {
       bg_color = bg,
       fg_color = fg,
       intensity = 'Bold',
+      italic = true,
     },
 
     inactive_tab = {
@@ -108,8 +103,11 @@ config.colors = {
       bg_color = bg,
       fg_color = fg,
     },
+
+    inactive_tab_edge = bg,
   },
 }
+
 wezterm.on('format-tab-title', function(tab)
   local title = tab.active_pane.title
 
@@ -125,7 +123,27 @@ wezterm.on('format-tab-title', function(tab)
     end
   end
 
-  return '  ' .. title .. '  '
+  return '   ' .. title .. '   '
 end)
+
+config.use_fancy_tab_bar = true
+config.tab_bar_at_bottom = false
+config.hide_tab_bar_if_only_one_tab = false
+config.show_tab_index_in_tab_bar = false
+config.show_tabs_in_tab_bar = true
+config.show_new_tab_button_in_tab_bar = false
+config.tab_max_width = 40
+config.window_frame = {
+  active_titlebar_bg = bg,
+  inactive_titlebar_bg = bg,
+  active_titlebar_fg = fg,
+  inactive_titlebar_fg = '#6c6c6c',
+  
+  active_titlebar_border_bottom = bg,
+  inactive_titlebar_border_bottom = bg,
+
+  font = wezterm.font 'FantasqueSansM Nerd Font',
+  font_size = 13.0,
+}
 
 return config
