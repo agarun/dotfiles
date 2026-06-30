@@ -23,18 +23,16 @@
 - [alt-tab-macos](https://github.com/lwouis/alt-tab-macos)
 - [itsycal](https://www.mowglii.com/itsycal/)
 - [pure-paste](https://sindresorhus.com/pure-paste)
-- [Raycast](https://www.raycast.com/) - spotlight replacement
-- [Sequel Ace](https://github.com/Sequel-Ace/Sequel-Ace) - SQL client
-- [GitUp](https://github.com/git-up/GitUp) - git client
+- [Raycast](https://www.raycast.com/)
+- [Sequel Ace](https://github.com/Sequel-Ace/Sequel-Ace)
 - [TopNotch](https://topnotch.app/)
-- [Mos](https://github.com/Caldis/Mos)
 - [IINA](https://iina.io/)
 - [onigiri](https://apps.apple.com/us/app/onigiri-minimal-timer/id1639917298?mt=12)
 
 ## Windows
 
 - [PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/install) - global hotkeys ("Keyboard Manager"), color picker
-- [whkd](https://github.com/LGUG2Z/whkd)
+- [whkd](https://github.com/LGUG2Z/whkd) - global hotkeys
 - [Fan Control](https://github.com/Rem0o/FanControl.Releases)
 - [EarTrumpet](https://eartrumpet.app/)
 - [Peace GUI](https://sourceforge.net/projects/peace-equalizer-apo-extension/) / [Equalizer APO](https://sourceforge.net/projects/equalizerapo/) - eq
@@ -46,7 +44,7 @@
 
 ## Apps I no longer use
 
-- [Orion](https://browser.kagi.com/), [Arc](https://arc.net/). [Thorium](https://github.com/Alex313031/Thorium)
+- [Orion](https://browser.kagi.com/), [Arc](https://arc.net/), Dia
 - [Insomnia](https://insomnia.rest/download), [Postman](https://www.postman.com/)
 - [Beeper](https://www.beeper.com/)
 - Sequel Pro, HeidiSQL,
@@ -70,6 +68,9 @@
 - [Catchmouse](https://github.com/round/CatchMouse)
 - [espanso](https://github.com/espanso/espanso)
 - [Bruno](https://github.com/usebruno/bruno)
+- [GitUp](https://github.com/git-up/GitUp)
+
+- [Mos](https://github.com/Caldis/Mos)
 
 # Fonts
 
