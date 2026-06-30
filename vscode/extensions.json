@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "eamodio.gitlens",
+    "sdras.night-owl",
+    "ms-vscode.atom-keybindings",
+    "formulahendry.auto-rename-tag",
+
+    "ms-python.python",
+    "charliermarsh.ruff",
+    "astral-sh.ty",
+
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "oxc.oxc-vscode"
+  ]
+}
