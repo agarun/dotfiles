@@ -1,6 +1,9 @@
 tap "homebrew/bundle"
+
 brew "z"
+brew "eza"
+brew "rg"
 brew "vim", link: true
+
 tap "jandedobbeleer/oh-my-posh"
 brew "jandedobbeleer/oh-my-posh/oh-my-posh"
-brew "eza"
