@@ -5,6 +5,9 @@
 [commit]
 	gpgsign = true
 
+[core]
+	editor = vim
+
 # Edit work dir below and edit .gitconfig-work contents
 [includeIf "gitdir:~/Projects/Work/"]
 	path = ~/.gitconfig-work
@@ -54,14 +57,17 @@
 	changed = green
 	untracked = cyan
 
+[push]
+	autosetupremote = true
+
+[pull]
+	autostash = true
+
 [branch]
 	autosetuprebase = always
 
-[push]
-	autoSetupRemote = true
-
 [rebase]
-	autostash = true
+	autoStash = true
 
 [rerere]
 	# record merge conflict resolutions and use them if they appear again
@@ -69,4 +75,3 @@
 	# NOTE: if you make a bad conflict resolution, you can `git rerere forget <file>`
 	#       or `rm -rf .git/rr-cache` or `git cp --no-rerere-autoupdate`
 	enabled = true
-

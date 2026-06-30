@@ -4,8 +4,7 @@
 alias dl="cd ~/Downloads"
 alias pj="cd ~/Projects"
 
-# Always enable colored `grep` output
-# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
+# Enable colored `grep` output
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -19,8 +18,6 @@ alias path='echo -e ${PATH//:/\\n}'
 # tmux + iTerm commands
 alias itn="tmux -CC new -s "
 alias it="tmux -CC at -t "
-
-alias lsofquick="sudo lsof -iTCP -sTCP:LISTEN -n -P | awk 'NR>1 {print $9, $1, $2}' | sed 's/.*://' | while read port process pid; do echo "Port $port: $(ps -p $pid -o command= | sed 's/^-//') (PID: $pid)"; done | sort -n"
 
 # Replace ls with eza
 export EZA_COLORS="ur=0:uw=0:ux=0:ue=0:gr=0:gw=0:gx=0:tr=0:tw=0:tx=0:su=0:sf=0:xa=0"
