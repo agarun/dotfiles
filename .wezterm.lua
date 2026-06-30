@@ -17,7 +17,7 @@ config.window_padding = {
   bottom = "0.7cell",
 }
 
-config.max_fps = 200
+config.max_fps = 240
 config.animation_fps = 60
 config.scrollback_lines = 10000
 
@@ -38,8 +38,8 @@ config.foreground_text_hsb = {
 config.default_cursor_style = 'SteadyBar'
 
 config.inactive_pane_hsb = {
-  saturation = 0.75,
-  brightness = 0.5,
+  saturation = 0.74,
+  brightness = 0.47,
 }
 
 config.keys = {
@@ -57,20 +57,26 @@ config.keys = {
     end),
   },
   { key = 'v',          mods = 'CTRL',      action = wezterm.action { PasteFrom = 'Clipboard' } },
+
   { key = 'q',          mods = 'CTRL',      action = wezterm.action.QuitApplication },
-  { key = 'w',          mods = 'CTRL|SHIFT',action = wezterm.action.CloseCurrentPane { confirm = false } },
+  { key = 'w',          mods = 'CTRL',      action = wezterm.action.CloseCurrentPane { confirm = false } },
+
+  { key = 't',          mods = 'CTRL',      action = wezterm.action.SpawnCommandInNewTab { domain = 'CurrentPaneDomain', cwd = '~' } },
+  { key = 'd',          mods = 'CTRL',      action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = 'D',          mods = 'CTRL|SHIFT',action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
   { key = '_',          mods = 'SHIFT|ALT', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
   { key = '+',          mods = 'SHIFT|ALT', action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
-  -- ALT+Arrow to move between panes (cleaner than SHIFT+ALT)
+
   { key = 'LeftArrow',  mods = 'ALT',       action = wezterm.action.ActivatePaneDirection 'Left' },
   { key = 'RightArrow', mods = 'ALT',       action = wezterm.action.ActivatePaneDirection 'Right' },
   { key = 'UpArrow',    mods = 'ALT',       action = wezterm.action.ActivatePaneDirection 'Up' },
   { key = 'DownArrow',  mods = 'ALT',       action = wezterm.action.ActivatePaneDirection 'Down' },
+
   { key = 'phys:LeftBracket',  mods = 'CTRL|SHIFT', action = wezterm.action.ActivateTabRelative(-1) },
   { key = 'phys:RightBracket', mods = 'CTRL|SHIFT', action = wezterm.action.ActivateTabRelative(1) },
 }
 
-local scheme = wezterm.color.get_builtin_schemes()['Raycast_Dark']
+local scheme = wezterm.color.get_builtin_schemes()[config.color_scheme]
 local bg = scheme.background
 local fg = scheme.foreground
 config.colors = {
@@ -86,7 +92,7 @@ config.colors = {
 
     inactive_tab = {
       bg_color = bg,
-      fg_color = '#6c6c6c',
+      fg_color = '#707070',
     },
 
     inactive_tab_hover = {
