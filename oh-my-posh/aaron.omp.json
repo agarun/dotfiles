@@ -30,6 +30,16 @@
           "style": "plain",
           "template": "*{{ reason .Code }}* ",
           "type": "status"
+        },
+        {
+          "type": "executiontime",
+          "style": "plain",
+          "foreground": "#d4902b",
+          "properties": {
+            "always_enabled": false,
+            "threshold": 500,
+            "style": "round"
+          }
         }
       ],
       "type": "prompt"
@@ -46,22 +56,6 @@
         }
       ],
       "type": "prompt"
-    },
-    {
-      "alignment": "right",
-      "segments": [
-        {
-          "background": "transparent",
-          "foreground": "#b0b0b0",
-          "properties": {
-            "time_format": "15:04:05"
-          },
-          "style": "diamond",
-          "template": "<d>{{ .CurrentDate | date .Format }}</>",
-          "type": "time"
-        }
-      ],
-      "type": "rprompt"
     }
   ],
   "final_space": true,
