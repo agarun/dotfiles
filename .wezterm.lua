@@ -1,7 +1,17 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
-config.default_domain = 'WSL:Ubuntu'
+local is_windows = wezterm.target_triple:find('windows') ~= nil
+local is_mac = wezterm.target_triple:find('apple') ~= nil
+local is_linux = wezterm.target_triple:find('linux') ~= nil
+local mod = is_mac and 'CMD' or 'CTRL'
+
+if is_windows then
+  config.default_domain = 'WSL:Ubuntu'
+elseif is_mac then
+  config.default_prog = { os.getenv('SHELL') or '/bin/zsh', '-l' }
+end
+
 config.window_close_confirmation = 'NeverPrompt'
 config.skip_close_confirmation_for_processes_named = {
   'bash', 'sh', 'zsh', 'fish', 'tmux', 'nu',
@@ -9,7 +19,12 @@ config.skip_close_confirmation_for_processes_named = {
   'wsl.exe', 'wslhost.exe',
 }
 
-config.window_decorations = 'RESIZE'
+if is_mac then
+  config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
+else
+  config.window_decorations = 'RESIZE'
+end
+
 config.window_padding = {
   left = "1cell",
   right = "1cell",
@@ -45,36 +60,62 @@ config.inactive_pane_hsb = {
 config.keys = {
   {
     key = 'c',
-    mods = 'CTRL',
+    mods = mod,
     action = wezterm.action_callback(function(window, pane)
-      selection_text = window:get_selection_text_for_pane(pane)
-      is_selection_active = string.len(selection_text) ~= 0
+      local selection_text = window:get_selection_text_for_pane(pane)
+      local is_selection_active = string.len(selection_text) ~= 0
       if is_selection_active then
         window:perform_action(wezterm.action.CopyTo('ClipboardAndPrimarySelection'), pane)
+      elseif is_mac then
+        -- Nothing selected + CMD+C on mac: just copy is a no-op, do nothing
       else
-        window:perform_action(wezterm.action.SendKey{ key='c', mods='CTRL' }, pane)
+        window:perform_action(wezterm.action.SendKey{ key = 'c', mods = 'CTRL' }, pane)
       end
     end),
   },
-  { key = 'v',          mods = 'CTRL',      action = wezterm.action { PasteFrom = 'Clipboard' } },
+  { key = 'v', mods = mod, action = wezterm.action { PasteFrom = 'Clipboard' } },
 
-  { key = 'q',          mods = 'CTRL',      action = wezterm.action.QuitApplication },
-  { key = 'w',          mods = 'CTRL',      action = wezterm.action.CloseCurrentPane { confirm = false } },
+  { key = 'q', mods = mod, action = wezterm.action.QuitApplication },
+  { key = 'w', mods = mod, action = wezterm.action.CloseCurrentPane { confirm = false } },
 
-  { key = 't',          mods = 'CTRL',      action = wezterm.action.SpawnCommandInNewTab { domain = 'CurrentPaneDomain', cwd = '~' } },
-  { key = 'd',          mods = 'CTRL',      action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
-  { key = 'D',          mods = 'CTRL|SHIFT',action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
-  { key = '_',          mods = 'SHIFT|ALT', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
-  { key = '+',          mods = 'SHIFT|ALT', action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
+  { key = 't', mods = mod, action = wezterm.action.SpawnCommandInNewTab { domain = 'CurrentPaneDomain', cwd = '~' } },
+  { key = 'g', mods = mod, action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = 'G', mods = mod .. '|SHIFT', action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
+  { key = '_', mods = 'SHIFT|ALT', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = '+', mods = 'SHIFT|ALT', action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
 
-  { key = 'LeftArrow',  mods = 'ALT',       action = wezterm.action.ActivatePaneDirection 'Left' },
-  { key = 'RightArrow', mods = 'ALT',       action = wezterm.action.ActivatePaneDirection 'Right' },
-  { key = 'UpArrow',    mods = 'ALT',       action = wezterm.action.ActivatePaneDirection 'Up' },
-  { key = 'DownArrow',  mods = 'ALT',       action = wezterm.action.ActivatePaneDirection 'Down' },
+  { key = 'LeftArrow',  mods = 'ALT', action = wezterm.action.ActivatePaneDirection 'Left' },
+  { key = 'RightArrow', mods = 'ALT', action = wezterm.action.ActivatePaneDirection 'Right' },
+  { key = 'UpArrow',    mods = 'ALT', action = wezterm.action.ActivatePaneDirection 'Up' },
+  { key = 'DownArrow',  mods = 'ALT', action = wezterm.action.ActivatePaneDirection 'Down' },
 
-  { key = 'phys:LeftBracket',  mods = 'CTRL|SHIFT', action = wezterm.action.ActivateTabRelative(-1) },
-  { key = 'phys:RightBracket', mods = 'CTRL|SHIFT', action = wezterm.action.ActivateTabRelative(1) },
+  { key = 'phys:LeftBracket',  mods = mod .. '|SHIFT', action = wezterm.action.ActivateTabRelative(-1) },
+  { key = 'phys:RightBracket', mods = mod .. '|SHIFT', action = wezterm.action.ActivateTabRelative(1) },
+
+ 
 }
+
+if is_windows then
+  table.insert(config.keys, {
+    key = 'p',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.SpawnCommandInNewTab {
+      domain = { DomainName = 'local' },
+      args = { 'powershell.exe', '-NoExit' },
+    },
+  })
+  table.insert(config.keys, {
+    key = 'p',
+    mods = 'CTRL|SHIFT|ALT',
+    action = wezterm.action.SpawnCommandInNewTab {
+      domain = { DomainName = 'local' },
+      args = {
+        'powershell.exe', '-NoExit', '-Command',
+        'Start-Process powershell -Verb RunAs', -- elevated
+      },
+    },
+  })
+end
 
 local scheme = wezterm.color.get_builtin_schemes()[config.color_scheme]
 local bg = scheme.background
@@ -144,12 +185,16 @@ config.window_frame = {
   inactive_titlebar_bg = bg,
   active_titlebar_fg = fg,
   inactive_titlebar_fg = '#6c6c6c',
-  
   active_titlebar_border_bottom = bg,
   inactive_titlebar_border_bottom = bg,
-
   font = wezterm.font 'FantasqueSansM Nerd Font',
   font_size = 13.0,
 }
+
+wezterm.on('window-config-reloaded', function(window, pane)
+  -- sometimes global hotkeys in Windows might conflict and cause
+  -- WezTerm to lose focus on boot, so we re-focus just in case
+  window:focus()
+end)
 
 return config
