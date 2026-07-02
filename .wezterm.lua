@@ -89,10 +89,13 @@ config.keys = {
   { key = 'UpArrow',    mods = 'ALT', action = wezterm.action.ActivatePaneDirection 'Up' },
   { key = 'DownArrow',  mods = 'ALT', action = wezterm.action.ActivatePaneDirection 'Down' },
 
+  { key = "UpArrow",    mods = "ALT|SHIFT", action = wezterm.action.AdjustPaneSize({ "Up", 3 }), },
+  { key = "DownArrow",  mods = "ALT|SHIFT", action = wezterm.action.AdjustPaneSize({ "Down", 3 }), },
+  { key = "LeftArrow",  mods = "ALT|SHIFT", action = wezterm.action.AdjustPaneSize({ "Left", 3 }), },
+  { key = "RightArrow", mods = "ALT|SHIFT", action = wezterm.action.AdjustPaneSize({ "Right", 3 }), },
+
   { key = 'phys:LeftBracket',  mods = mod .. '|SHIFT', action = wezterm.action.ActivateTabRelative(-1) },
   { key = 'phys:RightBracket', mods = mod .. '|SHIFT', action = wezterm.action.ActivateTabRelative(1) },
-
- 
 }
 
 if is_windows then
