@@ -73,7 +73,6 @@ config.keys = {
       end
     end),
   },
-  { key = 'v', mods = mod, action = wezterm.action { PasteFrom = 'Clipboard' } },
 
   { key = 'q', mods = mod, action = wezterm.action.QuitApplication },
   { key = 'w', mods = mod, action = wezterm.action.CloseCurrentPane { confirm = false } },
@@ -97,6 +96,16 @@ config.keys = {
   { key = 'phys:LeftBracket',  mods = mod .. '|SHIFT', action = wezterm.action.ActivateTabRelative(-1) },
   { key = 'phys:RightBracket', mods = mod .. '|SHIFT', action = wezterm.action.ActivateTabRelative(1) },
 }
+
+config.mouse_bindings = {
+  {
+    event = { Up = { streak = 1, button = "Left" } },
+    mods = mod,
+    action = wezterm.action.OpenLinkAtMouseCursor,
+  },
+}
+
+config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
 if is_windows then
   table.insert(config.keys, {
