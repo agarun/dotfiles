@@ -73,6 +73,8 @@ config.keys = {
       end
     end),
   },
+  { key = 'v', mods = mod, action = wezterm.action.PasteFrom 'Clipboard', },
+  { key = 'v', mods = mod .. '|SHIFT', action = wezterm.action.SendKey { key = 'v', mods = 'CTRL', }, }, -- default bind
 
   { key = 'q', mods = mod, action = wezterm.action.QuitApplication },
   { key = 'w', mods = mod, action = wezterm.action.CloseCurrentPane { confirm = false } },
