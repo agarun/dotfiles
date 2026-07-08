@@ -21,8 +21,10 @@ config.skip_close_confirmation_for_processes_named = {
 
 if is_mac then
   config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
+  config.font_size = 17.0
 else
   config.window_decorations = 'RESIZE'
+  config.font_size = 15.0
 end
 
 config.window_padding = {
@@ -42,7 +44,6 @@ config.scrollback_lines = 10000
 config.color_scheme = 'Raycast_Dark'
 
 config.font = wezterm.font 'FantasqueSansM Nerd Font'
-config.font_size = 15.0
 config.bold_brightens_ansi_colors = false
 config.foreground_text_hsb = {
   hue = 1.0,
@@ -85,10 +86,10 @@ config.keys = {
   { key = '_', mods = 'SHIFT|ALT', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
   { key = '+', mods = 'SHIFT|ALT', action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
 
-  { key = 'LeftArrow',  mods = 'ALT', action = wezterm.action.ActivatePaneDirection 'Left' },
-  { key = 'RightArrow', mods = 'ALT', action = wezterm.action.ActivatePaneDirection 'Right' },
-  { key = 'UpArrow',    mods = 'ALT', action = wezterm.action.ActivatePaneDirection 'Up' },
-  { key = 'DownArrow',  mods = 'ALT', action = wezterm.action.ActivatePaneDirection 'Down' },
+  { key = 'LeftArrow',  mods = is_mac and 'CMD' or 'ALT', action = wezterm.action.ActivatePaneDirection 'Left' },
+  { key = 'RightArrow', mods = is_mac and 'CMD' or 'ALT', action = wezterm.action.ActivatePaneDirection 'Right' },
+  { key = 'UpArrow',    mods = is_mac and 'CMD' or 'ALT', action = wezterm.action.ActivatePaneDirection 'Up' },
+  { key = 'DownArrow',  mods = is_mac and 'CMD' or 'ALT', action = wezterm.action.ActivatePaneDirection 'Down' },
 
   { key = "UpArrow",    mods = "ALT|SHIFT", action = wezterm.action.AdjustPaneSize({ "Up", 3 }), },
   { key = "DownArrow",  mods = "ALT|SHIFT", action = wezterm.action.AdjustPaneSize({ "Down", 3 }), },
