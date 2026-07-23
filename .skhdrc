@@ -6,7 +6,7 @@ alt - 0x32: open -a "Google Chrome"
 cmd + alt - 0x32: open -a "Google Chrome" --args --profile-directory="Work"
 
 # Terminal
-alt - 1: open -a "Warp"
+alt - 1: open -a "WezTerm"
 
 alt - 2: open -a "Visual Studio Code"
 
@@ -19,7 +19,7 @@ alt - 4: open -a "TablePlus"
 # Notes
 alt - w: open -a "Notion"
 
-alt - e: open -a "Ferdium"
+# alt - e: open -a "Ferdium"
 
 alt - r: open -a "Spotify"
 
@@ -31,7 +31,12 @@ alt - q: open -a "thinkorswim"
 
 alt - f: open -a "Finder"
 
+alt - o: open -a "Obsidian"
+
+alt - t: open -a "Neue"
+
 cmd + alt - a: open -a "ChatGPT"
+cmd + alt - c: open -a "Claude"
 
 # Windows screenshot hotkey as a MacOS screenshot hotkey
 ctrl + shift - s: /usr/sbin/screencapture -c -i

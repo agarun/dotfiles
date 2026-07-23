@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 export EDITOR="vim"
 
 export HISTIGNORE="ls:ls *:cd -:pwd;exit:date:* --help"
@@ -5,7 +7,7 @@ export HISTSIZE=4096
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
 
-# WSL2 only env
+# WSL2-specific env
 if [ -n "$WSL_DISTRO_NAME" ]; then
   __wsl2_osc7() {
     printf "\033]7;file://%s%s\033\\" "$HOSTNAME" "$PWD"
