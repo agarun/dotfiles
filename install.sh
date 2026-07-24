@@ -24,6 +24,7 @@ ln -sfn ~/.dotfiles/git/.gitconfig ~
 ln -sfn ~/.dotfiles/git/.gitconfig-work ~
 ln -sfn ~/.dotfiles/git/.gitignore ~
 
+ln -sfn ~/.dotfiles/run/.bashrc ~
 ln -sfn ~/.dotfiles/run/.bash_profile ~
 
 ln -sfn ~/.dotfiles/vim/.vimrc ~
