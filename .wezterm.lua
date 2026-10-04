@@ -100,15 +100,57 @@ config.keys = {
   { key = 'phys:RightBracket', mods = mod .. '|SHIFT', action = wezterm.action.ActivateTabRelative(1) },
 }
 
-config.mouse_bindings = {
+-- for apps that capture the mouse (e.g. Claude Code)
+config.mouse_bindings = {}
+for _, link_mods in ipairs { mod, 'ALT' } do
+  for _, reporting in ipairs { false, true } do
+    table.insert(config.mouse_bindings, {
+      event = { Down = { streak = 1, button = 'Left' } },
+      mods = link_mods,
+      mouse_reporting = reporting,
+      action = wezterm.action.Nop,
+    })
+    table.insert(config.mouse_bindings, {
+      event = { Up = { streak = 1, button = 'Left' } },
+      mods = link_mods,
+      mouse_reporting = reporting,
+      action = wezterm.action.OpenLinkAtMouseCursor,
+    })
+  end
+end
+
+config.hyperlink_rules = {
   {
-    event = { Up = { streak = 1, button = "Left" } },
-    mods = mod,
-    action = wezterm.action.OpenLinkAtMouseCursor,
+    regex = [[\((https?://\S+)\)]],
+    format = '$1',
+    highlight = 1,
+  },
+  {
+    regex = [=[\[(https?://\S+)\]]=],
+    format = '$1',
+    highlight = 1,
+  },
+  {
+    regex = [[\{(https?://\S+)\}]],
+    format = '$1',
+    highlight = 1,
+  },
+  {
+    regex = [[<(https?://\S+)>]],
+    format = '$1',
+    highlight = 1,
+  },
+  {
+    regex = [[\bhttps?://\S+[)/a-zA-Z0-9-]+]],
+    format = '$0',
   },
 }
 
-config.hyperlink_rules = wezterm.default_hyperlink_rules()
+wezterm.on('open-uri', function(_, _, uri)
+  if uri:lower():match('^mailto:') then
+    return false
+  end
+end)
 
 if is_windows then
   table.insert(config.keys, {
