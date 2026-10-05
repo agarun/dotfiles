@@ -9,6 +9,13 @@ export HISTCONTROL=ignoredups
 
 # WSL2-specific env
 if [ -n "$WSL_DISTRO_NAME" ]; then
+  if [ "$(wslinfo --networking-mode 2>/dev/null)" = mirrored ]; then
+    export WSL_WINDOWS_HOST_IP=127.0.0.1
+  else
+    export WSL_WINDOWS_HOST_IP="$(ip -4 route show dev eth0 proto kernel 2>/dev/null |
+      awk '{ split($1, ip, "[./]"); print ip[1] "." ip[2] "." ip[3] "." ip[4] + 1; exit }')"
+  fi
+
   __wsl2_osc7() {
     printf "\033]7;file://%s%s\033\\" "$HOSTNAME" "$PWD"
   }

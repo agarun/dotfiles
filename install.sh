@@ -24,6 +24,7 @@ ln -sfn ~/.dotfiles/git/.gitconfig ~
 ln -sfn ~/.dotfiles/git/.gitconfig-work ~
 ln -sfn ~/.dotfiles/git/.gitignore ~
 
+[ -f ~/.bashrc ] && [ ! -L ~/.bashrc ] && mv ~/.bashrc ~/.bashrc.bak
 ln -sfn ~/.dotfiles/run/.bashrc ~
 ln -sfn ~/.dotfiles/run/.bash_profile ~
 
@@ -36,6 +37,11 @@ ln -sfn ~/.dotfiles/tmux/.tmux.conf ~
 
 if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   # WSL2 / Linux
+  if [ -n "$WSL_DISTRO_NAME" ]; then
+    win_home="$(wslpath "$(cmd.exe /c 'echo %USERPROFILE%' 2>/dev/null | tr -d '\r')")"
+    printf 'return dofile([[%s]])\n' "$(wslpath -w ~/.dotfiles/.wezterm.lua)" > "$win_home/.wezterm.lua"
+  fi
+
   # VS Code
   rm -rf /mnt/c/Users/Aaron/AppData/Roaming/Code/User/settings.json
   cp ~/.dotfiles/vscode/settings.json /mnt/c/Users/Aaron/AppData/Roaming/Code/User/settings.json

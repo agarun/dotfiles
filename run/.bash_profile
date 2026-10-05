@@ -1,1 +1,1 @@
-[ -z "$PS1" ] && source ~/.bashrc
+[ -f ~/.bashrc ] && . ~/.bashrc
