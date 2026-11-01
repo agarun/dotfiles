@@ -26,38 +26,47 @@ make_local() {
   echo "  created $1"
 }
 
-# NOTE: Windows symlinks need admin rights or Developer Mode. Missing ones are created together after an admin prompt.
-win_pending=()
+win_links=()
 
 winlink() {
-  local src="$DOTFILES/$1" dest=$2
+  local dest=$2
   [ -L "$dest" ] && return
-  [ -e "$dest" ] && backup "$dest"
+  if [ -e "$dest" ]; then mkdir -p "$BACKUP" && cp "$dest" "$BACKUP/" && echo "  backed up $dest"; fi
   mkdir -p "$(dirname "$dest")"
-  if (cd /mnt/c && cmd.exe /c mklink "$(wslpath -w "$dest")" "$(wslpath -w "$src")" >/dev/null 2>&1); then
-    echo "  linked $dest"
-  else
-    win_pending+=("$dest|$src")
-  fi
+  win_links+=("$dest|$DOTFILES/$1")
 }
 
 winlink_flush() {
-  [ ${#win_pending[@]} -eq 0 ] && return
-  local script="$win/AppData/Local/Temp/dotfiles-links.ps1" entry dest src
-  mkdir -p "$(dirname "$script")"
-  : > "$script"
-  for entry in "${win_pending[@]}"; do
-    dest=${entry%%|*} src=${entry#*|}
-    printf "New-Item -ItemType SymbolicLink -Force -Path '%s' -Target '%s' | Out-Null\n" \
-      "$(wslpath -w "$dest")" "$(wslpath -w "$src")" >> "$script"
-  done
-  echo "  creating ${#win_pending[@]} Windows link(s): approve the admin prompt"
-  (cd /mnt/c && powershell.exe -NoProfile -Command \
-    "Start-Process powershell -Verb RunAs -Wait -ArgumentList '-NoProfile','-ExecutionPolicy','Bypass','-File','$(wslpath -w "$script")'") || true
-  rm -f "$script"
-  for entry in "${win_pending[@]}"; do
-    dest=${entry%%|*}
-    if [ -L "$dest" ]; then echo "  linked $dest"; else echo "  FAILED $dest"; fi
+  [ ${#win_links[@]} -eq 0 ] && return
+  local entry script
+
+  script=$(
+    echo '$links = @('
+    for entry in "${win_links[@]}"; do
+      echo "  '$(wslpath -w "${entry%%|*}")|$(wslpath -w "${entry#*|}")'"
+    done
+    echo ')'
+    cat <<'PS'
+foreach ($line in $links) {
+  $dest, $target = $line -split '\|', 2
+  $tmp = "$dest.dotfiles-new"
+  try {
+    New-Item -ItemType SymbolicLink -Force -Path $tmp -Target $target -ErrorAction Stop | Out-Null
+    if (Test-Path -LiteralPath $dest) { Remove-Item -LiteralPath $dest -Force }
+    Move-Item -LiteralPath $tmp -Destination $dest
+  } catch {
+    Write-Warning "${dest}: $_"
+  }
+}
+PS
+  )
+
+  echo "  creating ${#win_links[@]} Windows link(s): approve the admin prompt"
+  (cd /mnt/c && powershell.exe -NoProfile -Command "Start-Process powershell -Verb RunAs -Wait \
+    -ArgumentList '-NoProfile','-EncodedCommand','$(printf '%s' "$script" | iconv -t UTF-16LE | base64 -w0)'") || true
+
+  for entry in "${win_links[@]}"; do
+    if [ -L "${entry%%|*}" ]; then echo "  linked ${entry%%|*}"; else echo "  FAILED ${entry%%|*} (left as it was)"; fi
   done
 }
 
@@ -81,20 +90,10 @@ make_local bash/.bash_profile.local <<'EOF'
 . ~/.dotfiles/bash/.bash_profile
 EOF
 
-if [ -f "$HOME/.bashrc.local" ] && [ ! -L "$HOME/.bashrc.local" ]; then
-  cat "$HOME/.bashrc.local" >> "$DOTFILES/bash/.bashrc.local"
-  backup "$HOME/.bashrc.local"
-  echo "  moved ~/.bashrc.local into bash/.bashrc.local"
-fi
-
 link bash/.bashrc.local       "$HOME/.bashrc"
 link bash/.bash_profile.local "$HOME/.bash_profile"
 
 # ⋇ Git
-
-for old in "$HOME/.gitconfig-work" "$HOME/.gitignore"; do
-  [ -L "$old" ] && rm "$old"
-done
 
 if [ ! -e "$DOTFILES/git/.gitconfig.local" ]; then
   ask work_email "Work git email (blank for none): "
@@ -124,7 +123,7 @@ link vim/.vimrc       "$HOME/.vimrc"
 brew=$(command -v brew || ls /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew 2>/dev/null | head -1 || true)
 if [ -n "$brew" ]; then
   "$brew" trust jandedobbeleer/oh-my-posh >/dev/null 2>&1 || true
-  "$brew" bundle check --no-upgrade --file "$DOTFILES/brew/Brewfile" >/dev/null ||
+  "$brew" bundle check --no-upgrade --file "$DOTFILES/brew/Brewfile" &>/dev/null ||
     "$brew" bundle install --no-upgrade --file "$DOTFILES/brew/Brewfile" || echo "  brew bundle failed, see above"
 else
   echo "  Homebrew not found, install it from https://brew.sh then re-run"
@@ -132,9 +131,48 @@ fi
 
 mise=$(command -v mise || ls "$HOME/.local/bin/mise" 2>/dev/null || true)
 if [ -n "$mise" ]; then
-  "$mise" install --yes || echo "  mise install failed, see above"
+  "$mise" install --yes --quiet || echo "  mise install failed, see above"
 else
   echo "  mise not found, install it with: curl https://mise.run | sh"
+fi
+
+# ⋇ Agents
+
+merge_json() {
+  local target=$2 merged
+  [ -f "$target" ] || echo '{}' > "$target"
+  merged=$(jq -s '.[0] * .[1]' "$target" "$DOTFILES/$1") || return 0
+  [ "$merged" = "$(jq . "$target")" ] && return
+  printf '%s\n' "$merged" > "$target"
+  echo "  updated $target"
+}
+
+merge_toml() {
+  local target=$2 merged
+  touch "$target"
+  merged=$(awk '
+    function put(t,  i) { for (i = 1; i <= n; i++) if (tb[i] == t && !done[i]++) print line[i] }
+    BEGIN { seen[""] = 1 }
+    FNR == 1 { t = "" }
+    /^\[/ { if (NR != FNR) { put(t); seen[substr($0, 2, length($0) - 2)] = 1 } t = substr($0, 2, length($0) - 2) }
+    NR == FNR { if (/=/) { tb[++n] = t; key[n] = $1; line[n] = $0 } next }
+    /=/ { for (i = 1; i <= n; i++) if (tb[i] == t && key[i] == $1) { if (!done[i]++) print line[i]; next } }
+    { print }
+    END { if (NR == FNR || !FNR) t = ""; put(t); for (i = 1; i <= n; i++) if (!done[i]) { if (!seen[tb[i]]++) printf "\n[%s]\n", tb[i]; put(tb[i]) } }
+  ' "$DOTFILES/$1" "$target")
+  [ "$merged" = "$(cat "$target")" ] && return
+  printf '%s\n' "$merged" > "$target"
+  echo "  updated $target"
+}
+
+if command -v jq >/dev/null; then
+  for dir in "$HOME"/.claude*/; do
+    [ -d "$dir" ] && merge_json agents/claude.json "${dir}settings.json"
+  done
+  [ -d "$HOME/.copilot" ] && merge_json agents/copilot.json "$HOME/.copilot/settings.json"
+fi
+if [ -d "$HOME/.codex" ]; then
+  merge_toml agents/codex.toml "$HOME/.codex/config.toml"
 fi
 
 # ⋇ macOS
@@ -173,18 +211,20 @@ NeueUrl := "$neue_url"
 #Include $(wslpath -w "$DOTFILES/windows/hotkeys.ahk")
 EOF
 
-  win=$(wslpath "$(cd /mnt/c && cmd.exe /c 'echo %USERPROFILE%' 2>/dev/null | tr -d '\r')")
-  startup="$win/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
+  win=$(cd /mnt/c && cmd.exe /c 'echo %USERPROFILE%' 2>/dev/null | tr -d '\r')
+  if [ -z "$win" ]; then
+    echo "  can't find Windows (is cmd.exe on PATH?), skipping Windows links"
+  else
+    win=$(wslpath "$win")
+    startup="$win/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
 
-  winlink windows/hotkeys.local.ahk               "$startup/hotkeys.ahk"
-  winlink wezterm/wezterm.lua                     "$win/.wezterm.lua"
-  winlink windows/powertoys-keyboard-manager.json "$win/AppData/Local/Microsoft/PowerToys/Keyboard Manager/default.json"
-  winlink vscode/settings.json                    "$win/AppData/Roaming/Code/User/settings.json"
-  winlink vscode/keybindings.json                 "$win/AppData/Roaming/Code/User/keybindings.json"
-
-  winlink_flush
-
-  [ -f "$startup/Shortcuts.ahk" ] && backup "$startup/Shortcuts.ahk"
+    winlink windows/hotkeys.local.ahk               "$startup/hotkeys.ahk"
+    winlink wezterm/wezterm.lua                     "$win/.wezterm.lua"
+    winlink windows/powertoys-keyboard-manager.json "$win/AppData/Local/Microsoft/PowerToys/Keyboard Manager/default.json"
+    winlink vscode/settings.json                    "$win/AppData/Roaming/Code/User/settings.json"
+    winlink vscode/keybindings.json                 "$win/AppData/Roaming/Code/User/keybindings.json"
+    winlink_flush
+  fi
 fi
 
 echo "Done."
