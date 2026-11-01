@@ -1,2 +1,6 @@
 .vscode
 *.swp
+
+# Machine-only, see install.sh
+*.local
+*.local.*
