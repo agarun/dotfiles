@@ -1,65 +1,52 @@
 {
-  "atomKeymap.promptV3Features": true,
-  "editor.multiCursorModifier": "ctrlCmd",
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.inlineSuggest.enabled": true,
-  "editor.guides.bracketPairs": "active",
-  "editor.bracketPairColorization.enabled": true,
-  "editor.guides.bracketPairsHorizontal": false,
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
-  },
+  "editor.fontFamily": "'JetBrains Mono', monospace, 'Apple Color Emoji'",
+  "editor.fontSize": 14,
+  "editor.fontLigatures": true,
+  "window.zoomLevel": 2,
+  "workbench.colorTheme": "Night Owl (No Italics)",
   "editor.minimap.enabled": false,
   "editor.renderWhitespace": "boundary",
   "editor.renderControlCharacters": true,
-  "editor.fontFamily": "'JetBrains Mono', monospace, 'Apple Color Emoji'",
-  "[plaintext][markdown][json]": {
-    "editor.fontFamily": "'Fantasque Sans Mono', monospace, 'Apple Color Emoji'",
+  "editor.guides.indentation": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.guides.bracketPairsHorizontal": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "editor.accessibilitySupport": "off",
+
+  "editor.formatOnSave": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "atomKeymap.promptV3Features": true,
+
+  "[typescript][typescriptreact][javascript][javascriptreact][json][jsonc][html][css][scss][markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "markdown.preview.fontFamily": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, sans-serif",
-  "editor.fontLigatures": true,
-  "editor.fontSize": 14,
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "[plaintext][markdown][json]": {
+    "editor.fontFamily": "'Fantasque Sans Mono', monospace, 'Apple Color Emoji'"
+  },
   "prettier.singleQuote": true,
-  "window.zoomLevel": 2,
   "eslint.alwaysShowStatus": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "python.analysis.typeCheckingMode": "basic",
+  "markdown.preview.fontFamily": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, sans-serif",
+
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/*.pyc": true,
+    "**/*.pyc": true
   },
-  "workbench.colorTheme": "boya Gray",
-  "workbench.editor.customLabels.patterns": {
-    "**/src/**/index.**": "${dirname}/index.${extname}",
-  },
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "git.confirmSync": false,
-  "editor.guides.indentation": true,
-  "editor.accessibilitySupport": "off",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "remote.autoForwardPortsSource": "hybrid",
-  "svelte.enable-ts-plugin": true,
-  "git.openRepositoryInParentFolders": "always",
   "explorer.confirmDragAndDrop": false,
-  "playwright.reuseBrowser": false,
-  "git.addAICoAuthor": "off",
-  "security.allowedUNCHosts": ["wsl.localhost"],
-  "python.analysis.typeCheckingMode": "basic",
-  "github.copilot.enable": {
-    "*": false,
-    "plaintext": false,
-    "markdown": false,
-    "scminput": false,
-    "dotenv": false,
-  },
-  "github.copilot.nextEditSuggestions.enabled": false,
-  "editor.inlayHints.enabled": "offUnlessPressed",
-  "chat.viewSessions.orientation": "stacked",
   "explorer.confirmPasteNative": false,
-  "extensions.ignoreRecommendations": true,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
     "*.ts": "${capture}.js",
     "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
@@ -73,5 +60,30 @@
     "*.db3": "${capture}.${extname}-*",
     "*.sdb": "${capture}.${extname}-*",
     "*.s3db": "${capture}.${extname}-*",
+    ".env": ".env.*"
   },
+  "workbench.editor.customLabels.patterns": {
+    "**/src/**/index.**": "${dirname}/index.${extname}"
+  },
+
+  "git.confirmSync": false,
+  "git.openRepositoryInParentFolders": "always",
+  "git.addAICoAuthor": "off",
+
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "dotenv": false
+  },
+  "github.copilot.nextEditSuggestions.enabled": false,
+  "chat.viewSessions.orientation": "stacked",
+
+  "remote.autoForwardPortsSource": "hybrid",
+  "security.allowedUNCHosts": [
+    "wsl.localhost"
+  ],
+  "extensions.ignoreRecommendations": true,
+  "telemetry.telemetryLevel": "off"
 }
