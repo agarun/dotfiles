@@ -1,6 +1,7 @@
 brew "z"
 brew "eza"
 brew "rg"
+brew "jq"
 brew "vim", link: true
 
 tap "jandedobbeleer/oh-my-posh"

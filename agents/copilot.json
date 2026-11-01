@@ -1,0 +1,7 @@
+{
+  "includeCoAuthoredBy": false,
+  "statusLine": {
+    "type": "command",
+    "command": "~/.dotfiles/agents/statusline.sh"
+  }
+}
