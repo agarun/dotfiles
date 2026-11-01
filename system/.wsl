@@ -1,7 +1,0 @@
-if [ -n "${WSL_DISTRO_NAME:-}" ] && command -v explorer.exe >/dev/null 2>&1; then
-  open() {
-    explorer.exe "$@"
-  }
-fi
-
-alias wgit='/mnt/c/Program\ Files/Git/git-cmd.exe'

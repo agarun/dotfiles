@@ -1,13 +1,3 @@
-#!/usr/bin/env bash
-
-export EDITOR="vim"
-
-export HISTIGNORE="ls:ls *:cd -:pwd;exit:date:* --help"
-export HISTSIZE=4096
-export HISTFILESIZE=$HISTSIZE
-export HISTCONTROL=ignoredups
-
-# WSL2-specific env
 if [ -n "$WSL_DISTRO_NAME" ]; then
   if [ "$(wslinfo --networking-mode 2>/dev/null)" = mirrored ]; then
     export WSL_WINDOWS_HOST_IP=127.0.0.1
@@ -32,4 +22,16 @@ if [ -n "$WSL_DISTRO_NAME" ]; then
   }
   trap '__wsl2_preexec' DEBUG
   export PROMPT_COMMAND="__wsl2_preexec_armed=1; __wsl2_osc7; __wsl2_title bash${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
+fi
+
+# `open <dir>`
+if [ -n "${WSL_DISTRO_NAME:-}" ]; then
+  open() {
+    local target=${1:-.}
+    [ -e "$target" ] && target=$(wslpath -w "$target")
+    explorer.exe "$target"
+    return 0
+  }
+
+  alias wgit='/mnt/c/Program\ Files/Git/git-cmd.exe'
 fi
