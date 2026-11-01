@@ -2,23 +2,23 @@
 ; Reference
 ; https://www.autohotkey.com/docs/v2/Hotkeys.htm
 
-^!`::Run("`"C:\Program Files\Google\Chrome\Application\chrome.exe`" --profile-directory=`"Profile 1`"")
+^!`::Run("`"C:\Users\Aaron\AppData\Local\imput\Helium\Application\chrome.exe`" --profile-directory=`"Profile 1`"")
 
-!n::
-{
-global
-    If WinExist("Untitled - Notepad") { ; Quick notes
-        WinActivate()
-    } else {
-        Run("`"notepad`"")
-    }
-    return
-}
+;!n::
+;{
+;global
+;    If WinExist("Untitled - Notepad") { ; Quick notes
+;        WinActivate()
+;    } else {
+;        Run("`"notepad`"")
+;    }
+;    return
+;}
 
 ^!Esc::
 {
 global
-    If WinExist("Apex Legends") { ; Prevent alt-tabing in specific games
+    If WinExist("Apex Legends") { ; Prevent alt-tabing in games
         Return
     } else {
         WinClose()
@@ -27,8 +27,8 @@ global
 
 ; I use Microsoft PowerToys Keyboard Manager to natively remap shortcuts
 ; like Win + 0-9 into hotkeys like alt + 1, alt + q, etc.
-; See .skhdrc (Mac) or whkdrc (Windows) for those.
-; For everything else I can use AHK:
+; See windows/powertoys-keyboard-manager.json.
+; For everything else I can use AHK.
 }
 
 !3::
@@ -71,6 +71,17 @@ global
         WinActivate()
     } else {
         Run("`"C:\Users\Aaron\AppData\Local\Programs\obsidian\Obsidian.exe`"")
+    }
+    return
+}
+
+!T::
+{
+global
+    If WinExist("Neue ahk_exe neue-desktop.exe") {
+        WinActivate()
+    } else {
+        Run("`"C:\Users\Aaron\Apps\Neue\neue-desktop.exe`" --url=`"" NeueUrl "`"")
     }
     return
 }
