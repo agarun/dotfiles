@@ -123,14 +123,16 @@ link vim/.vimrc       "$HOME/.vimrc"
 
 brew=$(command -v brew || ls /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew 2>/dev/null | head -1 || true)
 if [ -n "$brew" ]; then
-  "$brew" bundle check --file "$DOTFILES/brew/Brewfile" >/dev/null || "$brew" bundle install --file "$DOTFILES/brew/Brewfile"
+  "$brew" trust jandedobbeleer/oh-my-posh >/dev/null 2>&1 || true
+  "$brew" bundle check --no-upgrade --file "$DOTFILES/brew/Brewfile" >/dev/null ||
+    "$brew" bundle install --no-upgrade --file "$DOTFILES/brew/Brewfile" || echo "  brew bundle failed, see above"
 else
   echo "  Homebrew not found, install it from https://brew.sh then re-run"
 fi
 
 mise=$(command -v mise || ls "$HOME/.local/bin/mise" 2>/dev/null || true)
 if [ -n "$mise" ]; then
-  "$mise" install --yes
+  "$mise" install --yes || echo "  mise install failed, see above"
 else
   echo "  mise not found, install it with: curl https://mise.run | sh"
 fi
