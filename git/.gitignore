@@ -1,18 +1,16 @@
-# Compiled Python files
 *.pyc
-
-# Folder view configuration files
-.DS_Store
-Desktop.ini
-
-# Thumbnail cache files
-._*
-Thumbs.db
-
-# Files that might appear on external disks
-.Spotlight-V100
-.Trashes
-
-# ...
 node_modules
 *.log
+
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Desktop.ini
+Thumbs.db
+
+mise.local.toml
+mise.*.local.toml
+.mise.local.toml
+
+**/.claude/settings.local.json

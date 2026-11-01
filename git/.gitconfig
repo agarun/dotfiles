@@ -7,21 +7,19 @@
 
 [core]
 	editor = vim
+	excludesFile = ~/.dotfiles/git/.gitignore
 
-# Edit work dir below and edit .gitconfig-work contents
-[includeIf "gitdir:~/Projects/Work/"]
-	path = ~/.gitconfig-work
+[init]
+	defaultBranch = main
 
 [alias]
 	co = checkout
 	cob = checkout -b
 
-	# List aliases
 	aliases = config --get-regexp alias
 
 	cp = cherry-pick
 
-	# Log
 	l = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --graph --abbrev-commit
 
 	# Interactive rebase with the given number of latest commits
@@ -29,13 +27,11 @@
 	# Preserve commit date and author when rebasing
 	rebp = "!r() { git -c rebase.instructionFormat='%s%nexec GIT_COMMITTER_DATE=\"%cD\" GIT_COMMITTER_NAME=\"%cn\" GIT_COMMITTER_EMAIL=\"%ce\" git commit --amend --no-edit' rebase $1; }; r"
 
-	# Show verbose output about tags, branches or remotes
 	tags = tag -l
 	branches = for-each-ref --sort=-committerdate --format='%(color:bold blue)%(authordate:relative) %(color:red)%(authorname) %(color:white)%(color:bold)%(refname:short)' refs/heads refs/remotes
 	remotes = remote -v
 
 [apply]
-	# Detect whitespace errors when applying a patch
 	whitespace = fix
 
 [status]
@@ -48,9 +44,9 @@
 
 [color "diff"]
 	meta = yellow bold
-	frag = magenta bold # line info
-	old = red # deletions
-	new = green # additions
+	frag = magenta bold
+	old = red
+	new = green
 
 [color "status"]
 	added = yellow
