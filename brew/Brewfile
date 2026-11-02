@@ -3,6 +3,8 @@ brew "fzf"
 brew "eza"
 brew "rg"
 brew "jq"
+brew "git"
+brew "gh"
 brew "vim", link: true
 brew "ffmpeg"
 brew "imagemagick"

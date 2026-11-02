@@ -5,7 +5,7 @@ For a list of my most-used apps, see [APPS.md](APPS.md).
 ## Setup
 
 1. First, Install [Homebrew](https://brew.sh) and [mise](https://mise.jdx.dev/getting-started.html).\
-   On Windows, also install [Git for Windows](https://gitforwindows.org/) (for gpg).
+   On Windows, also install [Git for Windows](https://gitforwindows.org/).
 2. Clone and install this repo:
 
 ```sh
