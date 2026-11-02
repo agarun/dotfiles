@@ -11,7 +11,8 @@
   "permissions": {
     "deny": [
       "Read(~/.ssh/id_*)",
-      "Read(~/.gnupg/**)"
+      "Read(~/.gnupg/**)",
+      "Read(~/.ssh/sshf*)"
     ]
   }
 }
