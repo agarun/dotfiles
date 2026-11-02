@@ -1,11 +1,18 @@
-brew "z"
+brew "zoxide"
+brew "fzf"
 brew "eza"
 brew "rg"
 brew "jq"
 brew "vim", link: true
+brew "ffmpeg"
+brew "imagemagick"
+brew "webp"
+brew "cloudflared"
 
 tap "jandedobbeleer/oh-my-posh"
 brew "jandedobbeleer/oh-my-posh/oh-my-posh"
 
 brew "bash" if OS.mac?
 brew "bash-completion@2" if OS.mac?
+brew "gnupg" if OS.mac?
+brew "pinentry-mac" if OS.mac?

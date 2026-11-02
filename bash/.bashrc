@@ -1,13 +1,10 @@
 export DOTFILES="$HOME/.dotfiles"
 
-# ---- PATH --------------------------------------------------------------------
-
 for brew in /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
   [ -x "$brew" ] && eval "$("$brew" shellenv)"
 done
 unset brew
 
-# Last one listed ends up first in PATH.
 path_dirs=(
   "$HOME/.local/share/mise/shims"
   "$HOME/.local/bin"
@@ -19,7 +16,7 @@ done
 unset dir path_dirs
 export PATH
 
-# ---- Interactive only from here ----------------------------------------------
+# interactive sessions start here
 
 case $- in
   *i*) ;;
@@ -30,7 +27,7 @@ shopt -s histappend checkwinsize
 
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# ---- Completion --------------------------------------------------------------
+# ⋇ completions
 
 if [ -f /usr/share/bash-completion/bash_completion ]; then
   . /usr/share/bash-completion/bash_completion
@@ -47,14 +44,14 @@ elif [ -d "$HOMEBREW_PREFIX/etc/bash_completion.d" ]; then
   unset file
 fi
 
-# ---- Config ------------------------------------------------------------------
+# ⋇ configs
 
 . "$DOTFILES/bash/exports.sh"
 . "$DOTFILES/bash/aliases.sh"
 . "$DOTFILES/bash/functions.sh"
 . "$DOTFILES/bash/wsl.sh"
 
-# ---- Tools -------------------------------------------------------------------
+# ⋇ tooling
 
 export GPG_TTY=$(tty)
 
@@ -64,3 +61,12 @@ if command -v mise >/dev/null; then
 fi
 
 command -v oh-my-posh >/dev/null && eval "$(oh-my-posh init bash --config "$DOTFILES/oh-my-posh/aaron.omp.json")"
+
+if command -v zoxide >/dev/null; then
+  eval "$(zoxide init bash)"
+  _z_complete() {
+    __zoxide_z_complete
+    [[ $COMP_CWORD == 1 && $2 && ! $COMPREPLY ]] && mapfile -t COMPREPLY < <(zoxide query --exclude "$PWD" -- "$2" 2>/dev/null)
+  }
+  complete -F _z_complete -o filenames z
+fi
