@@ -1,0 +1,11 @@
+{
+  "neue": {
+    "servers": [
+      ["api", "~/Projects/neue", "make dev-api"],
+      ["core", "~/Projects/neue", "pnpm dev"]
+    ],
+    "agents": [
+      ["neue", "~/Projects/neue"]
+    ]
+  }
+}

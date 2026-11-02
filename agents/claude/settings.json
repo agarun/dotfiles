@@ -7,5 +7,11 @@
   "statusLine": {
     "type": "command",
     "command": "~/.dotfiles/agents/statusline.sh"
+  },
+  "permissions": {
+    "deny": [
+      "Read(~/.ssh/id_*)",
+      "Read(~/.gnupg/**)"
+    ]
   }
 }

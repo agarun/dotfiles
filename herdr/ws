@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+# ws <project>: open a project from workspaces.json (+ workspaces.local.json) in Herdr
+
+set -euo pipefail
+
+DIR=${DOTFILES:-$HOME/.dotfiles}
+log() { printf 'ws: %s\n' "$*" >&2; }
+
+config=$({ cat "$DIR/workspaces.json" "$DIR/workspaces.local.json" 2>/dev/null || :; } | jq -s 'add // {}')
+usage() { echo "usage: ws <project> [--no-code]"; jq -r 'keys[] | "  " + .' <<<"$config"; exit "$1"; }
+
+project="" code=1
+for arg; do
+  case $arg in
+    --no-code) code=0 ;;
+    -h | --help) usage 0 ;;
+    -*) log "unknown option: $arg"; usage 2 ;;
+    *) project=$arg ;;
+  esac
+done
+jq -e --arg p "$project" 'has($p)' <<<"$config" >/dev/null || usage 2
+
+# [label, dir, cmd] / [label, dir] rows, tab-separated
+mapfile -t servers < <(jq -r --arg p "$project" '.[$p].servers[]? | @tsv' <<<"$config")
+mapfile -t agents < <(jq -r --arg p "$project" '.[$p].agents[]? | @tsv' <<<"$config")
+((${#agents[@]})) || { log "$project has no agents"; exit 1; }
+dir_of() { local dir; IFS=$'\t' read -r _ dir _ <<<"$1"; echo "${dir/#\~/$HOME}"; }
+
+running() { herdr status server 2>/dev/null | grep -q 'status: running'; }
+if ! running; then
+  (setsid herdr server >/dev/null 2>&1 &)
+  for _ in {1..50}; do running && break; sleep 0.1; done
+  running || { log "could not start the herdr server"; exit 1; }
+fi
+
+# tab <label> <dir>: find or create the tab, print its id
+tab() {
+  local id
+  id=$(herdr tab list --workspace "$ws" | jq -r --arg l "$1" 'first(.result.tabs[] | select(.label == $l) | .tab_id) // empty')
+  [[ -n $id ]] || id=$(herdr tab create --workspace "$ws" --cwd "$2" --label "$1" --no-focus | jq -r .result.tab.tab_id)
+  echo "$id"
+}
+
+# pane <tab> <label> <dir>: find the labeled pane, else take the tab's fresh first pane or split one off
+pane() {
+  local panes id
+  panes=$(herdr pane list --workspace "$ws" | jq -c --arg t "$1" '[.result.panes[] | select(.tab_id == $t)]')
+  id=$(jq -r --arg l "$2" 'first(.[] | select(.label == $l) | .pane_id) // empty' <<<"$panes")
+  if [[ -z $id ]]; then
+    id=$(jq -r 'if length == 1 and .[0].label == null then .[0].pane_id else empty end' <<<"$panes")
+    [[ -n $id ]] || id=$(herdr pane split "$(jq -r '.[-1].pane_id' <<<"$panes")" --direction right --ratio 0.5 --cwd "$3" --no-focus | jq -r .result.pane.pane_id)
+    herdr pane rename "$id" "$2" >/dev/null
+  fi
+  echo "$id"
+}
+
+# start <pane> <label> <cmd>: run the command only if the pane sits at a shell prompt
+start() {
+  local shell fg name
+  for _ in {1..30}; do
+    read -r shell fg name < <(herdr pane process-info --pane "$1" | jq -r '.result.process_info |
+      "\(.shell_pid // "") \(.foreground_process_group_id // "") \(.foreground_processes[0].name // "")"')
+    if [[ -n $shell && $shell == "$fg" ]]; then
+      herdr pane run "$1" "$3" >/dev/null
+      log "started $2: $3"
+      return
+    fi
+    [[ -z $name || $name =~ ^(bash|zsh|sh|fish)$ ]] || { log "$2 already running ($name)"; return; }
+    sleep 0.1
+  done
+  log "$2 isn't at a prompt; start it by hand"
+}
+
+first=$(dir_of "${servers[0]:-${agents[0]}}")
+ws=$(herdr workspace list | jq -r --arg l "$project" 'first(.result.workspaces[] | select(.label == $l) | .workspace_id) // empty')
+if [[ -z $ws ]]; then
+  read -r ws t < <(herdr workspace create --cwd "$first" --label "$project" --no-focus | jq -r '.result | "\(.workspace.workspace_id) \(.tab.tab_id)"')
+  herdr tab rename "$t" servers >/dev/null
+fi
+
+servers_tab=$(tab servers "$first")
+for row in "${servers[@]}"; do
+  IFS=$'\t' read -r label _ cmd <<<"$row"
+  start "$(pane "$servers_tab" "$label" "$(dir_of "$row")")" "$label" "$cmd"
+done
+
+agents_tab=$(tab agents "$(dir_of "${agents[0]}")")
+repos=()
+for row in "${agents[@]}"; do
+  IFS=$'\t' read -r label _ <<<"$row"
+  dir=$(dir_of "$row")
+  pane "$agents_tab" "$label" "$dir" >/dev/null
+  [[ " ${repos[*]} " == *" $dir "* ]] || repos+=("$dir")
+done
+
+herdr workspace focus "$ws" >/dev/null
+herdr tab focus "$servers_tab" >/dev/null
+if ((code)) && command -v code >/dev/null; then
+  for dir in "${repos[@]}"; do code -n "$dir" >/dev/null 2>&1 || log "could not open $dir in VS Code"; done
+fi
+[[ ${HERDR_ENV:-} == 1 || ! -t 1 ]] || exec herdr

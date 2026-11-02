@@ -118,10 +118,19 @@ link git/.gitconfig.local "$HOME/.gitconfig"
 link mise/config.toml "$HOME/.config/mise/config.toml"
 link vim/.vimrc       "$HOME/.vimrc"
 
+# ⋇ Workspaces
+
+make_local workspaces.local.json <<'EOF'
+{}
+EOF
+
+link herdr/ws "$HOME/bin/ws"
+
 # ⋇ Packages
 
 brew=$(command -v brew || ls /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew 2>/dev/null | head -1 || true)
 if [ -n "$brew" ]; then
+  "$brew" analytics off
   "$brew" trust jandedobbeleer/oh-my-posh >/dev/null 2>&1 || true
   "$brew" bundle check --no-upgrade --file "$DOTFILES/brew/Brewfile" &>/dev/null ||
     "$brew" bundle install --no-upgrade --file "$DOTFILES/brew/Brewfile" || echo "  brew bundle failed, see above"
@@ -141,7 +150,8 @@ fi
 merge_json() {
   local target=$2 merged
   [ -f "$target" ] || echo '{}' > "$target"
-  merged=$(jq -s '.[0] * .[1]' "$target" "$DOTFILES/$1") || return 0
+  merged=$(jq -s 'def m($a; $b): if ($a | type) == "object" and ($b | type) == "object" then reduce ($b | keys_unsorted[]) as $k ($a; .[$k] = m($a[$k]; $b[$k]))
+    elif ($a | type) == "array" and ($b | type) == "array" then $a + ($b - $a) else $b end; m(.[0]; .[1])' "$target" "$DOTFILES/$1") || return 0
   [ "$merged" = "$(jq . "$target")" ] && return
   printf '%s\n' "$merged" > "$target"
   echo "  updated $target"
@@ -167,12 +177,12 @@ merge_toml() {
 
 if command -v jq >/dev/null; then
   for dir in "$HOME"/.claude*/; do
-    [ -d "$dir" ] && merge_json agents/claude.json "${dir}settings.json"
+    [ -d "$dir" ] && merge_json agents/claude/settings.json "${dir}settings.json"
   done
-  [ -d "$HOME/.copilot" ] && merge_json agents/copilot.json "$HOME/.copilot/settings.json"
+  [ -d "$HOME/.copilot" ] && merge_json agents/copilot/settings.json "$HOME/.copilot/settings.json"
 fi
 if [ -d "$HOME/.codex" ]; then
-  merge_toml agents/codex.toml "$HOME/.codex/config.toml"
+  merge_toml agents/codex/config.toml "$HOME/.codex/config.toml"
 fi
 
 # ⋇ macOS
