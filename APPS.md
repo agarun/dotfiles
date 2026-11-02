@@ -102,7 +102,7 @@
 
 ## Notes
 
-[Notion](https://www.notion.so/), [Obsidian](https://obsidian.md/), tldraw offline
+[Notion](https://www.notion.so/), [Obsidian](https://obsidian.md/), [tldraw offline](https://offline.tldraw.com/)
 
 ## Chat
 
@@ -145,7 +145,7 @@
 
 [f.lux](https://justgetflux.com/), [WhatPulse](https://whatpulse.org/), [thinkorswim](https://www.schwab.com/trading/thinkorswim)\
 **macOS:** [itsycal](https://www.mowglii.com/itsycal/), [onigiri](https://apps.apple.com/us/app/onigiri-minimal-timer/id1639917298?mt=12), [Pure Paste](https://sindresorhus.com/pure-paste), [Thaw](https://github.com/thaw-app/Thaw)
-**Windows:** [File Pilot](https://filepilot.tech/), [Fan Control](https://github.com/Rem0o/FanControl.Releases)
+**Windows:** [File Pilot](https://filepilot.tech/), [Fan Control](https://github.com/Rem0o/FanControl.Releases), [vibranceGUI](https://github.com/juv/vibranceGUI)
 
 <details><summary>Previously</summary>
 
