@@ -2,6 +2,26 @@
 ; Reference
 ; https://www.autohotkey.com/docs/v2/Hotkeys.htm
 
+; See windows/powertoys-keyboard-manager.json for these hotkeys:
+; alt+` -> Helium
+; alt+1 -> Terminal
+; alt+2 -> VS Code
+; alt+d -> Discord
+; alt+e -> [placeholder, used to be Beeper/Ferdium/WhatsApp]
+; alt+f -> File Pilot
+; alt+q -> thinkorswim
+; alt+w -> Notion
+; alt+r -> Spotify
+; alt+s -> Slack
+; This file adds the following:
+; ctrl+alt+` -> Helium (work profile)
+; alt+3 -> Outlook
+; alt+4 -> TablePlus
+; alt+t -> Personal app
+; alt+n -> Notepad (disabled)
+; alt+shift+w -> Obsidian
+; alt+shift+f -> Firefox
+
 ^!`::Run("`"C:\Users\Aaron\AppData\Local\imput\Helium\Application\chrome.exe`" --profile-directory=`"Profile 1`"")
 
 ;!n::
@@ -15,26 +35,10 @@
 ;    return
 ;}
 
-^!Esc::
-{
-global
-    If WinExist("Apex Legends") { ; Prevent alt-tabing in games
-        Return
-    } else {
-        WinClose()
-    }
-    return
-
-; I use Microsoft PowerToys Keyboard Manager to natively remap shortcuts
-; like Win + 0-9 into hotkeys like alt + 1, alt + q, etc.
-; See windows/powertoys-keyboard-manager.json.
-; For everything else I can use AHK.
-}
-
 !3::
 {
 global
-    If WinExist("ahk_exe olk.exe") { ; Outlook
+    If WinExist("ahk_exe olk.exe") {
         WinActivate()
     } else {
         Run("`"olk`"")
@@ -45,21 +49,10 @@ global
 !4::
 {
 global
-    If WinExist("ahk_exe TablePlus.exe") { ; DB
+    If WinExist("ahk_exe TablePlus.exe") {
         WinActivate()
     } else {
         Run("`"C:\Program Files\TablePlus\TablePlus.exe`"")
-    }
-    return
-}
-
-+!R::
-{
-global
-    If WinExist("ahk_exe Spotify.exe") {
-        WinActivate()
-    } else {
-        Run("`"C:\Users\Aaron\AppData\Roaming\Spotify\Spotify.exe`"")
     }
     return
 }

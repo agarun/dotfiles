@@ -1,10 +1,6 @@
 {
-  "remapKeys": {
-    "inProcess": []
-  },
-  "remapKeysToText": {
-    "inProcess": []
-  },
+  "remapKeys": { "inProcess": [] },
+  "remapKeysToText": { "inProcess": [] },
   "remapShortcuts": {
     "global": [
       {
@@ -70,8 +66,5 @@
     ],
     "appSpecific": []
   },
-  "remapShortcutsToText": {
-    "global": [],
-    "appSpecific": []
-  }
+  "remapShortcutsToText": { "global": [], "appSpecific": [] }
 }
