@@ -209,6 +209,7 @@ fi
 
 if is_wsl; then
   link gnupg/gpg-agent.conf "$HOME/.gnupg/gpg-agent.conf"
+  link windows/chrome-host  "$HOME/bin/chrome-host"
   git config --global --get credential.helper >/dev/null ||
     git config --global credential.helper \
       '/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe'
