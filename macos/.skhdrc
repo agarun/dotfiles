@@ -5,7 +5,7 @@
 alt - 0x32: open -a "Google Chrome"
 cmd + alt - 0x32: open -a "Google Chrome" --args --profile-directory="Work"
 
-alt - 1: open -a "WezTerm"
+alt - 1: open -a "Rex Beta"
 
 alt - 2: open -a "Visual Studio Code"
 

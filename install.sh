@@ -195,7 +195,11 @@ if is_mac; then
     echo "  login shell is now $bash_path, open a new terminal"
   fi
 
-  link macos/.skhdrc "$HOME/.skhdrc"
+  link macos/.skhdrc              "$HOME/.skhdrc"
+  link gnupg/gpg-agent.macos.conf "$HOME/.gnupg/gpg-agent.conf"
+  link wezterm/wezterm.lua        "$HOME/.wezterm.lua"
+  link rex/init.lua               "$HOME/.config/rex/init.lua"
+  "$DOTFILES/rex/defaults.sh"
   vscode="$HOME/Library/Application Support/Code/User"
   link vscode/settings.json    "$vscode/settings.json"
   link vscode/keybindings.json "$vscode/keybindings.json"
@@ -204,7 +208,7 @@ fi
 # ⋇ WSL + Windows
 
 if is_wsl; then
-  link wsl/gpg-agent.conf "$HOME/.gnupg/gpg-agent.conf"
+  link gnupg/gpg-agent.conf "$HOME/.gnupg/gpg-agent.conf"
   git config --global --get credential.helper >/dev/null ||
     git config --global credential.helper \
       '/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe'

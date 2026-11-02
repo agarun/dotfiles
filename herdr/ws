@@ -28,7 +28,8 @@ dir_of() { local dir; IFS=$'\t' read -r _ dir _ <<<"$1"; echo "${dir/#\~/$HOME}"
 
 running() { herdr status server 2>/dev/null | grep -q 'status: running'; }
 if ! running; then
-  (setsid herdr server >/dev/null 2>&1 &)
+  detach=$(command -v setsid || echo nohup) # macOS has no setsid
+  ("$detach" herdr server >/dev/null 2>&1 &)
   for _ in {1..50}; do running && break; sleep 0.1; done
   running || { log "could not start the herdr server"; exit 1; }
 fi
