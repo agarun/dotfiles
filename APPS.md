@@ -144,7 +144,7 @@
 ## Utilities
 
 [f.lux](https://justgetflux.com/), [WhatPulse](https://whatpulse.org/), [thinkorswim](https://www.schwab.com/trading/thinkorswim)\
-**macOS:** [itsycal](https://www.mowglii.com/itsycal/), [onigiri](https://apps.apple.com/us/app/onigiri-minimal-timer/id1639917298?mt=12), [Pure Paste](https://sindresorhus.com/pure-paste), [TopNotch](https://topnotch.app/)\
+**macOS:** [itsycal](https://www.mowglii.com/itsycal/), [onigiri](https://apps.apple.com/us/app/onigiri-minimal-timer/id1639917298?mt=12), [Pure Paste](https://sindresorhus.com/pure-paste), [Thaw](https://github.com/thaw-app/Thaw)
 **Windows:** [File Pilot](https://filepilot.tech/), [Fan Control](https://github.com/Rem0o/FanControl.Releases)
 
 <details><summary>Previously</summary>
