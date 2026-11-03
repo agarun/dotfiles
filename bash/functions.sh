@@ -63,10 +63,6 @@ c() {
 }
 complete -o filenames -A file c
 
-dotfiles-sync() {
-	git -C "$DOTFILES" pull --rebase --autostash && "$DOTFILES/install.sh"
-}
-
 sshf() {
 	local host user pw line=$(awk -v a="$1" '$1 == a { print; exit }' ~/.ssh/sshf)
 	[ -n "$line" ] || line=$(grep -Ev '^[[:space:]]*(#|$)' ~/.ssh/sshf | fzf --query "$1" --select-1 --exit-0 --with-nth 1,2) || return
@@ -82,3 +78,7 @@ sshf() {
 }
 _sshf() { mapfile -t COMPREPLY < <(compgen -W "$(awk 'NF && !/^#/ { print $1 }' ~/.ssh/sshf 2>/dev/null)" -- "$2"); }
 complete -F _sshf sshf
+
+dotfiles-sync() {
+	git -C "$DOTFILES" pull --rebase --autostash && "$DOTFILES/install.sh"
+}
