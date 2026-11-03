@@ -69,7 +69,7 @@ sshf() {
 	read -r _ host user pw <<<"${line%$'\r'}"
 	SSHF_HOST=$user@$host SSHF_ROOT=${SSHF_ROOT:-dzdo -i} SSHF_PW=$pw expect -c '
 		set pw $env(SSHF_PW); unset env(SSHF_PW)
-		spawn -noecho ssh -v -t -o PreferredAuthentications=password -o PubkeyAuthentication=no \
+		spawn -noecho ssh -t -o PreferredAuthentications=password -o PubkeyAuthentication=no \
 			-o NumberOfPasswordPrompts=1 $env(SSHF_HOST) $env(SSHF_ROOT)
 		interact -o -re {(?i)password[^\r\n]*: ?$} {
 			send_user $interact_out(0,string)
