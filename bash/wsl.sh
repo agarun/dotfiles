@@ -1,6 +1,9 @@
 if [ -n "$WSL_DISTRO_NAME" ]; then
   if [ "$(wslinfo --networking-mode 2>/dev/null)" = mirrored ]; then
     export WSL_WINDOWS_HOST_IP=127.0.0.1
+  elif ip link show wsltap up 2>/dev/null | grep -q UP; then
+    export WSL_WINDOWS_HOST_IP="$(ip -4 -o addr show wsltap 2>/dev/null |
+      awk '{ split($4, ip, "[./]"); print ip[1] "." ip[2] "." ip[3] ".254"; exit }')"
   else
     export WSL_WINDOWS_HOST_IP="$(ip -4 route show dev eth0 proto kernel 2>/dev/null |
       awk '{ split($1, ip, "[./]"); print ip[1] "." ip[2] "." ip[3] "." ip[4] + 1; exit }')"
