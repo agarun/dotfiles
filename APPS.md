@@ -79,13 +79,13 @@
 
 ## Hotkeys
 
-**macOS:** [skhd](https://github.com/koekeishiya/skhd) ([.skhdrc](macos/.skhdrc)), [Raycast](https://www.raycast.com/)\
+**macOS:** [skhd](https://github.com/koekeishiya/skhd) ([.skhdrc](macos/.skhdrc)), Tinycast\
 **Windows:** [PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/install) Keyboard Manager ([config](windows/powertoys-keyboard-manager.json)), [AutoHotkey v2](https://www.autohotkey.com/) ([hotkeys.ahk](windows/hotkeys.ahk))
 
 <details><summary>Previously</summary>
 
 [espanso](https://github.com/espanso/espanso)\
-**macOS:** [Spark](https://www.shadowlab.org/softwares/spark.php), [Karabiner-Elements](https://github.com/pqrs-org/Karabiner-Elements), [Wooshy](https://wooshy.app/), [Homerow](https://www.homerow.app/), [Shortcat](https://shortcatapp.com/)\
+**macOS:** [Spark](https://www.shadowlab.org/softwares/spark.php), [Karabiner-Elements](https://github.com/pqrs-org/Karabiner-Elements), [Wooshy](https://wooshy.app/), [Homerow](https://www.homerow.app/),[Raycast](https://www.raycast.com/), [Shortcat](https://shortcatapp.com/)\
 **Windows:** [whkd](https://github.com/LGUG2Z/whkd) ([whkdrc](windows/whkdrc))
 
 </details>

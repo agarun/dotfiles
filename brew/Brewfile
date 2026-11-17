@@ -14,7 +14,18 @@ brew "cloudflared"
 tap "jandedobbeleer/oh-my-posh"
 brew "jandedobbeleer/oh-my-posh/oh-my-posh"
 
-brew "bash" if OS.mac?
-brew "bash-completion@2" if OS.mac?
-brew "gnupg" if OS.mac?
-brew "pinentry-mac" if OS.mac?
+tap "agarun/tap"
+brew "agarun/tap/rex-workspaces"
+
+if OS.mac?
+	brew "bash"
+	brew "bash-completion@2"
+
+	brew "gnupg"
+	brew "pinentry-mac"
+
+	brew "colima"
+	brew "docker"
+	brew "docker-compose"
+	brew "docker-buildx"
+end

@@ -121,10 +121,8 @@ link vim/.vimrc       "$HOME/.vimrc"
 # ⋇ Workspaces
 
 make_local workspaces.local.json <<'EOF'
-{}
+{ "workspaces": {} }
 EOF
-
-link herdr/ws "$HOME/bin/ws"
 
 # ⋇ Packages
 
@@ -132,6 +130,7 @@ brew=$(command -v brew || ls /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/b
 if [ -n "$brew" ]; then
   "$brew" analytics off
   "$brew" trust jandedobbeleer/oh-my-posh >/dev/null 2>&1 || true
+  "$brew" trust agarun/tap >/dev/null 2>&1 || true
   "$brew" bundle check --no-upgrade --file "$DOTFILES/brew/Brewfile" &>/dev/null ||
     "$brew" bundle install --no-upgrade --file "$DOTFILES/brew/Brewfile" || echo "  brew bundle failed, see above"
 else
@@ -197,9 +196,16 @@ if is_mac; then
 
   link macos/.skhdrc              "$HOME/.skhdrc"
   link gnupg/gpg-agent.macos.conf "$HOME/.gnupg/gpg-agent.conf"
-  link wezterm/wezterm.lua        "$HOME/.wezterm.lua"
+
   link rex/init.lua               "$HOME/.config/rex/init.lua"
+  link workspaces.local.json      "$HOME/.config/rex/workspaces.local.json"
+  if command -v rex-workspaces >/dev/null; then
+    rex-workspaces install || echo "  rex-workspaces install failed, see above"
+  else
+    echo "  rex-workspaces not found (brew install agarun/tap/rex-workspaces)"
+  fi
   "$DOTFILES/rex/defaults.sh"
+
   vscode="$HOME/Library/Application Support/Code/User"
   link vscode/settings.json    "$vscode/settings.json"
   link vscode/keybindings.json "$vscode/keybindings.json"

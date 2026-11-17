@@ -1,9 +1,0 @@
-{
-  "new": {
-    "servers": [
-      ["backend", "~/Projects/new", "make api"],
-      ["frontend", "~/Projects/new", "pnpm dev"]
-    ],
-    "agents": [["new", "~/Projects/new"]]
-  }
-}
